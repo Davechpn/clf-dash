@@ -5,12 +5,12 @@
     <div *ngFor="let tag of lessonTags | async">
         <div class="template-section">
             <input class="template-input" type="text"  (change)="updateTemplate(tag.id,$event.target.value)"  [value]="tag.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(tag.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newLessonTag"  />
+        <mat-icon (click)="addLessonTag()">check</mat-icon>
     </div>    
 </div>
 
@@ -18,16 +18,16 @@
 
 
 <div class="template-container">
-    <div class="template-headers">Tag Videos</div>
+    <div class="template-headers">Tag Notes</div>
     <div *ngFor="let tag of notesTags | async">
         <div class="template-section">
             <input class="template-input" type="text"  (change)="updateTemplate(tag.id,$event.target.value)" [value]="tag.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(tag.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newNotesTag"  />
+        <mat-icon (click)="addNotesTag()">check</mat-icon>
     </div>    
 </div>
 
@@ -37,12 +37,12 @@
     <div *ngFor="let prompt of quizPrompts | async">
         <div class="template-section">
             <input class="template-input" type="text"  (change)="updateTemplate(prompt.id,$event.target.value)" [value]="prompt.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(prompt.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newQuizPrompt"  />
+        <mat-icon (click)="addQuizPrompt()">check</mat-icon>
     </div>    
 </div>
 

@@ -14,6 +14,12 @@ export class CommentsTemplatesComponent implements OnInit {
   highToLowComments;
   lowToHighComments;
   lowToLowComments
+  newFailedComment: string;
+  newHighToHighComment: string;
+  newHighToLowComment: string;
+  newLowToHighComment: string;
+  newLowToLowComment: string;
+  newPassedComment: string;
 
   constructor(private ts:TemplatingService) { }
 
@@ -46,8 +52,33 @@ export class CommentsTemplatesComponent implements OnInit {
     this.lowToLowComments = this.ts.getFor_Low_Low_Fail()
   }
 
+  addPassedComments(){
+    console.log('added'+ this.newPassedComment )
+  }
+
+  getFailedComments(){
+     console.log('added'+ this.newFailedComment )
+  }
+
+  getHighToHighComments(){
+    console.log('added'+this.newHighToHighComment )
+  }
+  getHighToLowComments(){
+    console.log('added'+this.newHighToLowComment )
+  }
+  getLowToHighComments(){
+    console.log('added'+this.newLowToHighComment )
+  }
+  getLowToLowComments(){
+    console.log('added'+this.newLowToLowComment )
+  }
+
   updateTemplate(id,template){
     console.log(id+" : " + template)
+  }
+
+  deleteTemplate(id){
+    console.log(id+" : to be deleted" )
   }
 
 }

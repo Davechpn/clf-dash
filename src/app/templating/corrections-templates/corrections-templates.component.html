@@ -5,12 +5,12 @@
     <div *ngFor="let cab_comment of initialStartComments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" [(ngModel)]="newInitialStartComment" placeholder="Add new" />
+        <mat-icon (click)="addInitialStartComment()">check</mat-icon>
     </div>    
 </div>
 
@@ -21,12 +21,12 @@
     <div *ngFor="let cab_comment of initialRetryComments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newInitialRetryComment"/>
+        <mat-icon (click)="addInitialRetryComment()">check</mat-icon>
     </div>    
 </div>
 
@@ -36,12 +36,12 @@
     <div *ngFor="let cab_comment of passedat1Comments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newPassedat1Comment"/>
+        <mat-icon (click)="addPassedat1Comment()">check</mat-icon>
     </div>    
 </div>
 
@@ -52,12 +52,12 @@
     <div *ngFor="let cab_comment of passedat2Comments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newPassedat2Comment"/>
+        <mat-icon (click)="addPassedat2Comment()">check</mat-icon>
     </div>    
 </div>
 
@@ -69,12 +69,12 @@
     <div *ngFor="let cab_comment of passedat3Comments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newPassedat3Comment"/>
+        <mat-icon (click)="addPassedat3Comment()">check</mat-icon>
     </div>    
 </div>
 
@@ -86,12 +86,12 @@
     <div *ngFor="let cab_comment of passedatOver3Comments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newPassedatOver3Comment"/>
+        <mat-icon (click)="addPassedatOver3Comment()">check</mat-icon>
     </div>    
 </div>
 
@@ -104,12 +104,12 @@
     <div *ngFor="let cab_comment of failedat2Comments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newFailedat2Comment"/>
+        <mat-icon (click)="addFailedat2Comment()">check</mat-icon>
     </div>    
 </div>
 
@@ -120,12 +120,12 @@
     <div *ngFor="let cab_comment of failedat3Comments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newFailedat3Comment"/>
+        <mat-icon (click)="addFailedat3Comment()">check</mat-icon>
     </div>    
 </div>
 
@@ -137,12 +137,12 @@
     <div *ngFor="let cab_comment of failedatOver3Comments | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(cab_comment.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newFailedatOver3Comment"/>
+        <mat-icon (click)="addFailedatOver3Comment()">check</mat-icon>
     </div>    
 </div>
 

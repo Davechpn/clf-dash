@@ -13,6 +13,8 @@ export class IntroTemplatesComponent implements OnInit {
   introTags;
   lessonPrompts;
   notesPrompts;
+  newLessonPrompt: string;
+  newNotesPrompt: string;
   constructor(private ts:TemplatingService) { }
 
   ngOnInit() {
@@ -20,28 +22,45 @@ export class IntroTemplatesComponent implements OnInit {
     this.getPromptsTolessons()
     this.getPromptsToNotes()
   }
+  //GET TEMPLATES///////////////////////////////////////////////////////////////////////
+    getTags(){
+      this.introTags = this.ts.getTags('I')
+    }
 
-  getTags(){
-    this.introTags = this.ts.getTags('I')
-  }
+    getPromptsTolessons(){
+      this.lessonPrompts = this.ts.getPrompts('I','L')
+      
+    }
 
-  addTag(){
-    console.log('Adding tag '+ this.newTag)
-  }
+    getPromptsToNotes(){
+      this.notesPrompts = this.ts.getPrompts('I','N')
+    }
+  //END GET TEMPLATES///////////////////////////////////////////////////////////////////
+  //
+  //
+  //SET TEMPLATES///////////////////////////////////////////////////////////////////////
+    addTag(){
+      console.log('Adding tag '+ this.newTag)
+    }
 
-  getPromptsTolessons(){
-    this.lessonPrompts = this.ts.getPrompts('I','L')
-     
-  }
+    addLessonPrompt(){
+      console.log('adding'+this.newLessonPrompt)
+    }
 
-  getPromptsToNotes(){
-    this.notesPrompts = this.ts.getPrompts('I','N')
-  }
+    addNotesPrompt(){
+      console.log('adding'+this.newNotesPrompt)
+    }
 
-  updateTemplate(id,template){
-    console.log(id+" : " + template)
-  }
-
-  
+  //END SET TEMPLATES//////////////////////////////////////////////////////////////////  
+  //
+  //
+  //
+    updateTemplate(id,template){
+      console.log(id+" : " + template)
+    }
+    deleteTemplate(id){
+      console.log(id+" : to be deleted" )
+    }
+    
 
 }

@@ -4,7 +4,7 @@
     <div *ngFor="let tag of introTags | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(tag.id,$event.target.value)" [value]="tag.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(tag.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
@@ -19,12 +19,12 @@
     <div *ngFor="let prompt of lessonPrompts | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(prompt.id,$event.target.value)" [value]="prompt.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(prompt.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newLessonPrompt"  />
+        <mat-icon (click)="addLessonPrompt()">check</mat-icon>
     </div>    
 </div>
 
@@ -34,12 +34,12 @@
     <div *ngFor="let prompt of notesPrompts | async">
         <div class="template-section">
             <input class="template-input" type="text" (change)="updateTemplate(prompt.id,$event.target.value)" [value]="prompt.template"/>
-            <mat-icon>delete_outline</mat-icon>
+            <mat-icon (click)="deleteTemplate(prompt.id)">delete_outline</mat-icon>
         </div>
     </div>
     <div class="template-section">
-        <input class="template-input" type="text" placeholder="Add new" />
-        <mat-icon>check</mat-icon>
+        <input class="template-input" type="text" placeholder="Add new" [(ngModel)]="newNotesPrompt"  />
+        <mat-icon (click)="addNotesPrompt()">check</mat-icon>
     </div>    
 </div>
 
