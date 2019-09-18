@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.fab-section{
+    position:fixed;
+    bottom:68px;
+    right:8px;
+    height:44px;
+    width: 44px;
+   
+}
+
+.search-section{
+    position:fixed;
+    bottom:68px;
+    right:64px;
+    left:58px;
+    height:44px;
+
+}
+
+#search-text-box{
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    padding-left: 10px; 
+    font-size: 1.2rem;
+    width: 96%;
+    height: 35px;  
+    box-shadow: 0px 1px 8px #ccc;
+}

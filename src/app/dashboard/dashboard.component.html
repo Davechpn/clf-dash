@@ -1,0 +1,39 @@
+<div class="count-strip">
+  <div class="count-item">
+      <div class="count-item-count">100</div>
+      <div>students</div>
+  </div>
+  <div class="count-item">
+        <div class="count-item-count">100</div>
+        <div>subs</div>
+  </div>
+  <div class="count-item">
+        <div class="count-item-count">100</div>
+        <div>courses</div>
+  </div>
+</div>
+
+<div style="display: block;">
+        <canvas baseChart width="400" height="400"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    [plugins]="lineChartPlugins"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+</div>
+
+<div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+

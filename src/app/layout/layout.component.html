@@ -1,0 +1,51 @@
+<div class="header">
+       
+        <div class="header-top-strip">
+                <div style="flex-grow: 1;font-size: 2rem">CLF-Dash</div>
+                <div>
+                    <mat-icon mat-button [matMenuTriggerFor]="menu">menu</mat-icon>
+
+                    <mat-menu #menu="matMenu">
+                    <button mat-menu-item [routerLink]="['/admins']" routerLinkActive="router-link-active" >Admins</button>
+                    <button mat-menu-item [routerLink]="['/payments']" routerLinkActive="router-link-active" >Payments</button>
+                    <button mat-menu-item [routerLink]="['/account']" routerLinkActive="router-link-active" >My Account</button>
+                    </mat-menu>
+                </div>
+
+            
+                
+
+        </div>
+        <div class="header-bottom-strip">
+                <mat-form-field>
+                        <mat-label>Favorite food</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                </mat-form-field> 
+        </div>
+</div>
+
+<div class="content">
+        <router-outlet></router-outlet>
+</div>
+
+
+
+<div class="footer">
+    <div class="menu-item" [routerLink]="['/home']" routerLinkActive="router-link-active" >
+        <mat-icon>dashboard</mat-icon>
+        Dash
+    </div>
+    <div class="menu-item" [routerLink]="['/enrollment']" routerLinkActive="router-link-active" >
+        <mat-icon>group</mat-icon>
+        Enrollment
+    </div>
+    <div class="menu-item" [routerLink]="['/studio']" routerLinkActive="router-link-active" >
+        <mat-icon>movie</mat-icon>
+        Studio
+    </div>
+    
+</div>
