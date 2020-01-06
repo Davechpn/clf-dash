@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+*:focus {
+    outline: none !important;
+    border: 0 !important;
+}
 
 .fab-section{
     position:fixed;
@@ -15,17 +19,17 @@
     position:fixed;
     bottom:68px;
     right:64px;
-    left:58px;
+    left:18px;
     height:44px;
 
 }
 
 #search-text-box{
     border-radius: 50px;
-    border: 1px solid #ccc;
+    border: none;
     padding-left: 10px; 
     font-size: 1.2rem;
-    width: 96%;
+    width: 98%;
     height: 35px;  
-    box-shadow: 0px 1px 8px #ccc;
+    box-shadow: 1px 1px 10px  #ddd;
 }

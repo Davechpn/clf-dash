@@ -1,7 +1,7 @@
 <div class="header">
        
         <div class="header-top-strip">
-                <div style="flex-grow: 1;font-size: 2rem">CLF-Dash</div>
+                <div style="flex-grow: 1;font-size: 2rem; display: flex; align-items: center"><img class ="logo" src="./../../assets/icons/logo-72.jpg" />CLF-Dash</div>
                 <div>
                     <mat-icon mat-button [matMenuTriggerFor]="menu">menu</mat-icon>
 
@@ -17,6 +17,7 @@
 
         </div>
         <div class="header-bottom-strip">
+            <br/><br/>
                 <mat-form-field>
                         <mat-label>Favorite food</mat-label>
                         <mat-select>
@@ -36,16 +37,21 @@
 
 <div class="footer">
     <div class="menu-item" [routerLink]="['/home']" routerLinkActive="router-link-active" >
-        <mat-icon>dashboard</mat-icon>
+        <mat-icon>timeline</mat-icon>
         Dash
     </div>
     <div class="menu-item" [routerLink]="['/enrollment']" routerLinkActive="router-link-active" >
-        <mat-icon>group</mat-icon>
+        <mat-icon>how_to_reg</mat-icon>
         Enrollment
     </div>
     <div class="menu-item" [routerLink]="['/studio']" routerLinkActive="router-link-active" >
-        <mat-icon>movie</mat-icon>
+        <mat-icon>spellcheck</mat-icon>
         Studio
+    </div>
+
+    <div class="menu-item" [routerLink]="['/training']" routerLinkActive="router-link-active" >
+        <mat-icon>chat_bubble_outline</mat-icon>
+        Training
     </div>
     
 </div>

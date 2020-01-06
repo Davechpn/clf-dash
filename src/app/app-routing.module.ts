@@ -9,8 +9,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { PreviewComponent } from './preview/preview.component';
+import { TrainingComponent } from './training/training.component';
+
 
 const routes: Routes = [
+  {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'',component:LayoutComponent,children:[
       {path:'home',component:DashboardComponent},
       {path:'enrollment',component:EnrollmentComponent},
@@ -18,7 +21,8 @@ const routes: Routes = [
       {path:'studio',component:StudioComponent},
       {path:'admins',component:AdminsComponent},
       {path:'account',component:AccountComponent},
-      {path:'preview',component:PreviewComponent}  
+      {path:'preview',component:PreviewComponent},
+      {path:'training',component:TrainingComponent} 
     ]
   },
   {path:'login',component:LoginComponent}

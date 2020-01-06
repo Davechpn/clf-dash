@@ -1,0 +1,134 @@
+<mat-accordion class="example-headers-align " >
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+      
+        <mat-panel-description>
+            Introductions &nbsp;
+          <mat-icon>mood</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+       <app-intro-templates></app-intro-templates>
+  
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+       
+        <mat-panel-description>
+         Serving Lessons
+          <mat-icon>emoji_people</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <app-lesson-templates></app-lesson-templates>
+  
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+          Commenting
+            
+            <mat-icon>hearing</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <app-comments-templates></app-comments-templates>
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+
+
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            Quiz  Corrections
+            <mat-icon>playlist_add_check</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <app-corrections-templates></app-corrections-templates>
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+  
+
+      
+    <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+        <mat-expansion-panel-header>
+          
+          <mat-panel-description>
+             Carrier Guidance &nbsp;
+            <mat-icon>call_merge</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+       <app-cg-templates></app-cg-templates>
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+
+    <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)" hideToggle>
+        <mat-expansion-panel-header>
+     
+          <mat-panel-description>
+            Student Registration 
+            <mat-icon>how_to_reg</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <app-registration-templates></app-registration-templates>
+    
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+  
+  
+
+
+    
+  
+    <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)" hideToggle>
+      <mat-expansion-panel-header>
+      
+        <mat-panel-description>
+            Sharing Reports
+        
+          <mat-icon>date_range</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+       <app-sharing-templates></app-sharing-templates>
+  
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Previous</button>
+        <button mat-button color="primary" (click)="nextStep()">End</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    
+  
+  </mat-accordion>
+  

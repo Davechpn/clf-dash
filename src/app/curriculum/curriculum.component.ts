@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-syllubi',
-  templateUrl: './syllubi.component.html',
-  styleUrls: ['./syllubi.component.css']
+  selector: 'app-curriculum',
+  templateUrl: './curriculum.component.html',
+  styleUrls: ['./curriculum.component.css']
 })
-export class SyllubiComponent implements OnInit {
+export class CurriculumComponent implements OnInit {
 
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -22,5 +22,4 @@ export class SyllubiComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
-
 }

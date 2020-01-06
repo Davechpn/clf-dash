@@ -21,9 +21,8 @@
                     [colors]="lineChartColors"
                     [legend]="lineChartLegend"
                     [chartType]="lineChartType"
-                    [plugins]="lineChartPlugins"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
+                   
+                 ></canvas>
 </div>
 
 <div style="display: block">
@@ -31,7 +30,7 @@
           [datasets]="barChartData"
           [labels]="barChartLabels"
           [options]="barChartOptions"
-          [plugins]="barChartPlugins"
+         
           [legend]="barChartLegend"
           [chartType]="barChartType">
         </canvas>
