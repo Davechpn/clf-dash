@@ -1,1 +1,149 @@
-<p>corrections-templates works!</p>
+
+
+<div class="template-container">
+    <div class="template-headers">At Initial Start</div>
+    <div *ngFor="let cab_comment of initialStartComments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+<div class="template-container">
+    <div class="template-headers">First Attempt after passed previous </div>
+    <div *ngFor="let cab_comment of initialRetryComments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+<div class="template-container">
+    <div class="template-headers">Passed in first reattempt and completed</div>
+    <div *ngFor="let cab_comment of passedat1Comments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+<div class="template-container">
+    <div class="template-headers">Passed in second reattempt and completed</div>
+    <div *ngFor="let cab_comment of passedat2Comments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+
+<div class="template-container">
+    <div class="template-headers">Passed in third reattempt and completed</div>
+    <div *ngFor="let cab_comment of passedat3Comments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+
+<div class="template-container">
+    <div class="template-headers">Passed in Over 3 attempts and completed</div>
+    <div *ngFor="let cab_comment of passedatOver3Comments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+
+
+<div class="template-container">
+    <div class="template-headers">Failed at first reattempt</div>
+    <div *ngFor="let cab_comment of failedat2Comments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+<div class="template-container">
+    <div class="template-headers">Failed at second reattempt</div>
+    <div *ngFor="let cab_comment of failedat3Comments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+
+<div class="template-container">
+    <div class="template-headers">Failed at 3 and over reattempts</div>
+    <div *ngFor="let cab_comment of failedatOver3Comments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(cab_comment.id,$event.target.value)" [value]="cab_comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+

@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
@@ -15,7 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { PreviewComponent } from './preview/preview.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { CdkStepperModule} from '@angular/cdk/stepper';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -71,6 +69,7 @@ import { SharingTemplatesComponent } from './templating/sharing-templates/sharin
 import { TopicsComponent } from './topics/topics.component';
 import { CurriculumDetailsComponent } from './curriculum-details/curriculum-details.component';
 import { TutorsComponent } from './tutors/tutors.component';
+import { CareerGuidanceComponent } from './career-guidance/career-guidance.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +97,8 @@ import { TutorsComponent } from './tutors/tutors.component';
     SharingTemplatesComponent,
     TopicsComponent,
     CurriculumDetailsComponent,
-    TutorsComponent
+    TutorsComponent,
+    CareerGuidanceComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +106,7 @@ import { TutorsComponent } from './tutors/tutors.component';
     AppRoutingModule,
     ChartsModule,
     CdkStepperModule,
+    FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),

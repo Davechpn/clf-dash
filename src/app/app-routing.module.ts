@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { PreviewComponent } from './preview/preview.component';
 import { TrainingComponent } from './training/training.component';
+import { CareerGuidanceComponent } from './career-guidance/career-guidance.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
       {path:'admins',component:AdminsComponent},
       {path:'account',component:AccountComponent},
       {path:'preview',component:PreviewComponent},
-      {path:'training',component:TrainingComponent} 
+      {path:'training',component:TrainingComponent},
+      {path:'careers',component:CareerGuidanceComponent}
     ]
   },
   {path:'login',component:LoginComponent}

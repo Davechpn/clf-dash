@@ -33,3 +33,21 @@
     height: 35px;  
     box-shadow: 1px 1px 10px  #ddd;
 }
+
+
+/*Templating*/
+
+.template-container{
+    border: 1px solid #ccc;
+}
+
+.template-section{
+    border: 1px dashed #ddd;
+    display:flex;
+    align-items: center;
+    width: 100%;
+}
+
+.template-input{ 
+    flex-grow: 1;
+}

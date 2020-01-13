@@ -6,8 +6,16 @@
 .example-headers-align .mat-expansion-panel-header-description {
   justify-content: space-between;
   align-items: center;
+
 }
 
 mat-form-field {
   margin-right: 12px;
+}
+
+
+.panel-icon{
+ position: relative;
+ left: 18px;
+ 
 }

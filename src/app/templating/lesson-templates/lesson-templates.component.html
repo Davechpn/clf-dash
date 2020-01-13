@@ -1,1 +1,50 @@
-<p>lesson-templates works!</p>
+
+
+<div class="template-container">
+    <div class="template-headers">Tag Videos</div>
+    <div *ngFor="let tag of lessonTags | async">
+        <div class="template-section">
+            <input class="template-input" type="text"  (change)="updateTemplate(tag.id,$event.target.value)"  [value]="tag.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+
+<div class="template-container">
+    <div class="template-headers">Tag Videos</div>
+    <div *ngFor="let tag of notesTags | async">
+        <div class="template-section">
+            <input class="template-input" type="text"  (change)="updateTemplate(tag.id,$event.target.value)" [value]="tag.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+<div class="template-container">
+    <div class="template-headers">Prompting Quiz</div>
+    <div *ngFor="let prompt of quizPrompts | async">
+        <div class="template-section">
+            <input class="template-input" type="text"  (change)="updateTemplate(prompt.id,$event.target.value)" [value]="prompt.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+

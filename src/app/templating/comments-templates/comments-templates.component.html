@@ -1,1 +1,97 @@
-<p>comments-templates works!</p>
+
+<div class="template-container">
+    <div class="template-headers">Passed just ended Quiz</div>
+    <div *ngFor="let comment of passedComments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(comment.id,$event.target.value)" [value]="comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+
+
+<div class="template-container">
+    <div class="template-headers">Failed just ended Quiz</div>
+    <div *ngFor="let comment of failedComments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(comment.id,$event.target.value)" [value]="comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+<div class="template-container">
+    <div class="template-headers">All Time High Performer</div>
+    <div *ngFor="let comment of highToHighComments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(comment.id,$event.target.value)" [value]="comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+<div class="template-container">
+    <div class="template-headers">High to Low Performer</div>
+    <div *ngFor="let comment of highToLowComments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(comment.id,$event.target.value)" [value]="comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+<div class="template-container">
+    <div class="template-headers">Low to High Performer</div>
+    <div *ngFor="let comment of lowToHighComments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(comment.id,$event.target.value)" [value]="comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+<div class="template-container">
+    <div class="template-headers">All Time Low Perfomance</div>
+    <div *ngFor="let comment of lowToLowComments | async">
+        <div class="template-section">
+            <input class="template-input" type="text" (change)="updateTemplate(comment.id,$event.target.value)" [value]="comment.template"/>
+            <mat-icon>delete_outline</mat-icon>
+        </div>
+    </div>
+    <div class="template-section">
+        <input class="template-input" type="text" placeholder="Add new" />
+        <mat-icon>check</mat-icon>
+    </div>    
+</div>
+
+
+
+
+
+
