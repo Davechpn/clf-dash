@@ -14,6 +14,7 @@ export class CommentsTemplatesComponent implements OnInit {
   highToLowComments;
   lowToHighComments;
   lowToLowComments
+  min_characters = 5;
   newFailedComment: string;
   newHighToHighComment: string;
   newHighToLowComment: string;
@@ -32,7 +33,7 @@ export class CommentsTemplatesComponent implements OnInit {
     this.getLowToHigh();
     this.getLowToLow();
   }
-
+  //GET TEMPLATES///////////////////////////////////////////////////////////////////////
   getFailed(){
     this.failedComments  = this.ts.getFor_None_Gradient_Fail()
   }
@@ -51,34 +52,74 @@ export class CommentsTemplatesComponent implements OnInit {
   getLowToLow(){
     this.lowToLowComments = this.ts.getFor_Low_Low_Fail()
   }
+  //END GET TEMPLATES///////////////////////////////////////////////////////////////////
+  //
+  //
+  //SET TEMPLATES///////////////////////////////////////////////////////////////////////
 
   addPassedComments(){
-    console.log('added'+ this.newPassedComment )
+    if(this.newPassedComment.length>this.min_characters){
+      console.log('adding'+ this.newPassedComment)
+      this.ts.setFor_None_Gradient_Pass(this.newPassedComment)
+      this.newPassedComment = ""
+    }
   }
 
-  getFailedComments(){
-     console.log('added'+ this.newFailedComment )
+  addFailedComments(){
+ 
+     if(this.newFailedComment.length>this.min_characters){
+      console.log('adding'+ this.newFailedComment ) 
+      this.ts.setFor_None_Gradient_Fail(this.newFailedComment)
+      this.newFailedComment = "" 
+    }
   }
 
-  getHighToHighComments(){
-    console.log('added'+this.newHighToHighComment )
-  }
-  getHighToLowComments(){
-    console.log('added'+this.newHighToLowComment )
-  }
-  getLowToHighComments(){
-    console.log('added'+this.newLowToHighComment )
-  }
-  getLowToLowComments(){
-    console.log('added'+this.newLowToLowComment )
-  }
+  addHighToHighComments(){
 
-  updateTemplate(id,template){
-    console.log(id+" : " + template)
+    if(this.newHighToHighComment.length>this.min_characters){
+      console.log('adding'+this.newHighToHighComment ) 
+      this.ts.setFor_High_High_Pass(this.newHighToHighComment)
+      this.newHighToHighComment=""
+    }
+  }
+  addHighToLowComments(){
+ 
+    if(this.newHighToLowComment.length>this.min_characters){
+      console.log('adding'+this.newHighToLowComment )
+      this.ts.setFor_High_Low_Fail(this.newHighToLowComment)
+      this.newHighToLowComment=""
+    }
+  }
+  addLowToHighComments(){
+ 
+    if(this.newLowToHighComment.length>this.min_characters){
+      console.log('adding'+this.newLowToHighComment)
+      this.ts.setFor_Low_High_Pass(this.newLowToHighComment)
+      this.newLowToHighComment=""
+    }
+  }
+  addLowToLowComments(){
+ 
+    if(this.newLowToLowComment.length>this.min_characters){
+      console.log('adding'+this.newLowToLowComment)
+      this.ts.setFor_Low_Low_Fail(this.newLowToLowComment)
+      this.newLowToLowComment=""
+    }
+  }
+  //END SET TEMPLATES//////////////////////////////////////////////////////////////////  
+  //
+  //
+  //
+
+  updateTemplate(template,text){
+    template.template = text  
+    console.log(template)
+    this.ts.updateTemplate(template) 
   }
 
   deleteTemplate(id){
     console.log(id+" : to be deleted" )
+    this.ts.deleteTemplate(id)
   }
 
 }

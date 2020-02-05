@@ -20,6 +20,7 @@ export class CorrectionsTemplatesComponent implements OnInit {
   failedat2Comments;
   failedat3Comments
   failedatOver3Comments
+  min_characters = 5;
   newFailedatOver3Comment: string;
   newFailedat3Comment: string;
   newFailedat2Comment: string;
@@ -89,43 +90,87 @@ export class CorrectionsTemplatesComponent implements OnInit {
     this.passedatOver3Comments = this.ts.getFor_FourthOrAbove_Retry_ToExit_After_Pass() 
   }
 
-
+//END GET TEMPLATES///////////////////////////////////////////////////////////////////
+  //
+  //
+//SET TEMPLATES///////////////////////////////////////////////////////////////////////
   addInitialStartComment(){
-    console.log('adding'+ this.newInitialStartComment)
+    if(this.newInitialStartComment.length>this.min_characters){
+      console.log('adding'+ this.newInitialStartComment)
+      this.ts.setFor_Initial_CabStart(this.newInitialStartComment)
+      this.newInitialStartComment=""
+    }
+ 
   }
   addInitialRetryComment()
   {
-    console.log('adding'+ this.newInitialRetryComment)
+    if(this.newInitialRetryComment.length>this.min_characters){
+      console.log('adding'+ this.newInitialRetryComment)
+      this.ts.setFor_Initial_Retry_ToNext_After_Pass(this.newInitialRetryComment)
+      this.newInitialRetryComment=""
+    }
   }
   addPassedat1Comment(){
-    console.log('adding'+ this.newPassedat1Comment)
+    if(this.newPassedat1Comment.length>this.min_characters){
+      console.log('adding'+ this.newPassedat1Comment)
+      this.ts.setFor_Initial_Retry_ToExit_After_Pass(this.newPassedat1Comment)
+      this.newPassedat1Comment=""
+    }
   }
   addPassedat2Comment(){
-    console.log('adding'+ this.newPassedat2Comment)
+  
+    if(this.newPassedat2Comment.length> this.min_characters){
+      console.log('adding'+ this.newPassedat2Comment)
+      this.ts.setFor_Second_Retry_ToExit_After_Pass(this.newPassedat2Comment)
+      this.newPassedat2Comment = ""
+    }
   }
-  addPassedat3Comment(){
-    console.log('adding'+ this.newPassedat3Comment)
+  addPassedat3Comment(){  
+    if(this.newPassedat3Comment.length> this.min_characters){
+      console.log('adding'+ this.newPassedat3Comment)
+      this.ts.setFor_Third_Retry_ToExit_After_Pass(this.newPassedat3Comment)
+      this.newPassedat3Comment=""
+    }
   }
-  addPassedatOver3Comment(){
-    console.log('adding'+ this.newPassedatOver3Comment)
+  addPassedatOver3Comment(){ 
+    if(this.newPassedatOver3Comment.length> this.min_characters){
+      console.log('adding'+ this.newPassedatOver3Comment)
+      this.ts.setFor_FourthOrAbove_Retry_ToExit_After_Pass(this.newPassedatOver3Comment) 
+      this.newPassedatOver3Comment=""
+    }
   }
-  addFailedat2Comment(){
-    console.log('adding'+ this.newFailedat2Comment)
+  addFailedat2Comment(){   
+    if(this.newFailedat2Comment.length> this.min_characters){
+      console.log('adding'+ this.newFailedat2Comment)
+      this.ts.setFor_Second_Retry_After_Fail(this.newFailedat2Comment)
+  
+      this.newFailedat2Comment=""
+    }
   }
   addFailedat3Comment(){
-    console.log('adding'+ this.newFailedat3Comment)
+    if(this.newFailedat3Comment.length> this.min_characters){
+      console.log('adding'+ this.newFailedat3Comment)
+      this.ts.setFor_Third_Retry_After_Fail(this.newFailedat3Comment)
+      this.newFailedat3Comment=""
+    }
   }
-  addFailedatOver3Comment(){
-    console.log('adding'+ this.newFailedatOver3Comment)
+  addFailedatOver3Comment(){   
+    if(this.newFailedatOver3Comment.length> this.min_characters){
+      console.log('adding'+ this.newFailedatOver3Comment)
+      this.ts.setFor_FourthOrAbove_Retry_After_Fail(this.newFailedatOver3Comment)
+      this.newFailedatOver3Comment=""
+    }
   }
  
-  updateTemplate(id,template){
-    console.log(id+" : " + template)
+  updateTemplate(template,text){
+    template.template = text  
+    console.log(template)
+    this.ts.updateTemplate(template) 
   }
-
- 
   deleteTemplate(id){
     console.log(id+" : to be deleted" )
+    this.ts.deleteTemplate(id)
   }
+  
 
 }

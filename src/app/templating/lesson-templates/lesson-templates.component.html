@@ -4,7 +4,7 @@
     <div class="template-headers">Tag Videos</div>
     <div *ngFor="let tag of lessonTags | async">
         <div class="template-section">
-            <input class="template-input" type="text"  (change)="updateTemplate(tag.id,$event.target.value)"  [value]="tag.template"/>
+            <input class="template-input" type="text"  (change)="updateTemplate(tag,$event.target.value)"  [value]="tag.template"/>
             <mat-icon (click)="deleteTemplate(tag.id)">delete_outline</mat-icon>
         </div>
     </div>
@@ -21,7 +21,7 @@
     <div class="template-headers">Tag Notes</div>
     <div *ngFor="let tag of notesTags | async">
         <div class="template-section">
-            <input class="template-input" type="text"  (change)="updateTemplate(tag.id,$event.target.value)" [value]="tag.template"/>
+            <input class="template-input" type="text"  (change)="updateTemplate(tag,$event.target.value)" [value]="tag.template"/>
             <mat-icon (click)="deleteTemplate(tag.id)">delete_outline</mat-icon>
         </div>
     </div>
@@ -36,7 +36,7 @@
     <div class="template-headers">Prompting Quiz</div>
     <div *ngFor="let prompt of quizPrompts | async">
         <div class="template-section">
-            <input class="template-input" type="text"  (change)="updateTemplate(prompt.id,$event.target.value)" [value]="prompt.template"/>
+            <input class="template-input" type="text"  (change)="updateTemplate(prompt,$event.target.value)" [value]="prompt.template"/>
             <mat-icon (click)="deleteTemplate(prompt.id)">delete_outline</mat-icon>
         </div>
     </div>

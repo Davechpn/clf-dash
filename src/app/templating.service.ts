@@ -14,7 +14,12 @@ export class TemplatingService {
                                                       .where('type','==','tag'))
                                                       .valueChanges({ idField: 'id' })
       }
-      setTag(){
+      setTag(schema_stage:string,template:string){
+        this.db.collection('templates').add({
+                                              current_stage:schema_stage,
+                                              type:'tag',
+                                              template:template
+                                            })
       }
 
    //END TAGGING//////////////////////////////////////////////////////////
@@ -28,7 +33,13 @@ export class TemplatingService {
                                                       .valueChanges({ idField: 'id' })
       }
 
-      setPrompt(){
+      setPrompt(from:string,to:string,template){
+        this.db.collection('templates').add({
+                                              current_stage:from,
+                                              next_stage:to,
+                                              template:template,
+                                              type:'prompt'
+                                            })
       }
 
 
@@ -42,8 +53,13 @@ export class TemplatingService {
                                                       .where('type','==','comment'))
                                                       .valueChanges({ idField: 'id' })
       }
-      setFor_High_High_Pass(){
-
+      setFor_High_High_Pass(template:string){
+        this.db.collection('templates').add({
+          gradient:'high-high',
+          status:'pass',
+          type:'comment',
+          template:template
+        })
       }
     //high-low---------------------------------------
       getFor_High_Low_Fail(){
@@ -52,7 +68,13 @@ export class TemplatingService {
                                                       .where('type','==','comment'))
                                                       .valueChanges({ idField: 'id' })
       }
-      setFor_High_High_Fail(){
+      setFor_High_Low_Fail(template:string){
+        this.db.collection('templates').add({
+          gradient:'high-low',
+          status:'fail',
+          type:'comment',
+          template:template
+        })
       }
     //low-high---------------------------------------
       getFor_Low_High_Pass(){
@@ -62,8 +84,13 @@ export class TemplatingService {
                                                       .valueChanges({ idField: 'id' })
 
       }
-      setFor_Low_High_Pass(){
-
+      setFor_Low_High_Pass(template:string){
+        this.db.collection('templates').add({
+          gradient:'low-high',
+          status:'pass',
+          type:'comment',
+          template:template
+        })
       }
     //low_low----------------------------------------
       getFor_Low_Low_Fail(){
@@ -72,7 +99,13 @@ export class TemplatingService {
                                                       .where('type','==','comment'))
                                                       .valueChanges({ idField: 'id' })
       }
-      setFor_Low_Low_Fail(){   
+      setFor_Low_Low_Fail(template:string){ 
+        this.db.collection('templates').add({
+          gradient:'low-low',
+          status:'fail',
+          type:'comment',
+          template:template
+        })  
       }
     //none_gradient_pass-----------------------------
       getFor_None_Gradient_Pass(){
@@ -81,7 +114,13 @@ export class TemplatingService {
                                                       .where('type','==','comment'))
                                                       .valueChanges({ idField: 'id' })
       }
-      setFor_None_Gradient_Pass(){   
+      setFor_None_Gradient_Pass(template:string){ 
+        this.db.collection('templates').add({
+          gradient:'none',
+          status:'pass',
+          type:'comment',
+          template:template
+        })  
       }
 
     //none_gradient_fail-----------------------------
@@ -91,7 +130,13 @@ export class TemplatingService {
                                                       .where('type','==','comment'))
                                                       .valueChanges({ idField: 'id' })
       }
-      setFor_None_Gradient_Fail(){   
+      setFor_None_Gradient_Fail(template:string){  
+        this.db.collection('templates').add({
+          gradient:'none',
+          status:'fail',
+          type:'comment',
+          template:template
+        }) 
       }
    //END COMMENTING//////////////////////////////////////////////////////
 
@@ -103,8 +148,12 @@ export class TemplatingService {
                                                           .where('type','==','cab_comment'))
                                                           .valueChanges({ idField: 'id' })
           }
-          setFor_Initial_CabStart(){
-
+          setFor_Initial_CabStart(template:string){
+            this.db.collection('templates').add({
+                                                  is_initial_retry:true,
+                                                  type:'cab_comment',
+                                                  template:template
+                                                })
           }
 
 
@@ -120,8 +169,15 @@ export class TemplatingService {
                                                             .where('has_next_retry','==',true))
                                                             .valueChanges({ idField: 'id' })
             }
-            setFor_Initial_Retry_ToNext_After_Pass(){
-
+            setFor_Initial_Retry_ToNext_After_Pass(template:string){
+              this.db.collection('templates').add({
+                retries:0 ,
+                last_retry_success:true ,
+                has_next_retry:true ,
+                template:template,
+                type:'cab_comment'
+                
+              })
             }
           //to_exit-------------------------------
             getFor_Initial_Retry_ToExit_After_Pass(){
@@ -131,8 +187,14 @@ export class TemplatingService {
                                                             .where('has_next_retry','==',false))
                                                             .valueChanges({ idField: 'id' })
             }
-            setFor_Initial_Retry_ToExit_After_Pass(){
-
+            setFor_Initial_Retry_ToExit_After_Pass(template:string){
+              this.db.collection('templates').add({
+                retries: 0,
+                last_retry_success: true,
+                has_next_retry: false,
+                template:template,
+                type:'cab_comment'
+              })
             }
 
 
@@ -146,8 +208,13 @@ export class TemplatingService {
                                                             .valueChanges({ idField: 'id' })                            
       
             }
-            setFor_Second_Retry_After_Fail(){
-
+            setFor_Second_Retry_After_Fail(template:string){
+              this.db.collection('templates').add({
+                retries:1,
+                last_retry_success:false,
+                template:template,
+                type:'cab_comment'
+              })
             }
         //After Pass-------------------------------------//
             //to_exit-------------------------------
@@ -158,8 +225,14 @@ export class TemplatingService {
                                                             .where('has_next_retry','==',false))
                                                             .valueChanges({ idField: 'id' })
             }
-            setFor_Second_Retry_ToExit_After_Pass(){
-
+            setFor_Second_Retry_ToExit_After_Pass(template:string){
+              this.db.collection('templates').add({
+                retries:1,
+                last_retry_success:true,
+                has_next_retry:false,
+                template:template,
+                type:'cab_comment'
+              })
             }
       //Third Retry//////////////////////////////////////////////
         //After Fail-------------------------------------//
@@ -170,8 +243,13 @@ export class TemplatingService {
                                                             .where('last_retry_success','==',false)) 
                                                             .valueChanges({ idField: 'id' })
             }
-            setFor_Third_Retry_After_Fail(){
-
+            setFor_Third_Retry_After_Fail(template:string){
+              this.db.collection('templates').add({
+                retries:2,
+                last_retry_success:false,
+                template:template,
+                type:'cab_comment'
+              })
             }
         //After Pass-------------------------------------//
             //to_exit-------------------------------
@@ -182,8 +260,14 @@ export class TemplatingService {
                                                             .where('has_next_retry','==',false))
                                                             .valueChanges({ idField: 'id' })
             }
-            setFor_Third_Retry_ToExit_After_Pass(){
-
+            setFor_Third_Retry_ToExit_After_Pass(template:string){
+              this.db.collection('templates').add({
+                retries:2,
+                last_retry_success:true,
+                has_next_retry:false,
+                template:template,
+                type:'cab_comment'
+              })
             }
       //FourthOrAbove Retry//////////////////////////////////////////////
         //After Fail-------------------------------------//
@@ -195,8 +279,13 @@ export class TemplatingService {
                                                             .valueChanges({ idField: 'id' })
          
             }
-            setFor_FourthOrAbove_Retry_After_Fail(){
-
+            setFor_FourthOrAbove_Retry_After_Fail(template:string){
+              this.db.collection('templates').add({
+                retries:3,
+                last_retry_success:false,
+                template:template,
+                type:'cab_comment'
+              })
             }
         //After Pass-------------------------------------//
             //to_exit-------------------------------
@@ -207,8 +296,14 @@ export class TemplatingService {
                                                             .where('has_next_retry','==',false))
                                                             .valueChanges({ idField: 'id' })
             }
-            setFor_FourthOrAbove_Retry_ToExit_After_Pass(){
-
+            setFor_FourthOrAbove_Retry_ToExit_After_Pass(template:string){
+              this.db.collection('templates').add({
+                retries:3,
+                last_retry_success:true,
+                has_next_retry:false,
+                template:template,
+                type:'cab_comment'
+              })
             }
    //END CAB-COMMENTING//////////////////////////////////////////////////
 
@@ -229,5 +324,15 @@ export class TemplatingService {
         
       }
     //END CAREER GUIDING/////////////////////////////////////////////////
+
+    deleteTemplate(id){
+      this.db.doc(`templates/${id}`).delete()
+    }
+
+    updateTemplate(template){
+      const id = template.id
+      delete template.id
+      this.db.doc(`templates/${id}`).set(template,{merge:true})
+    }
 
 }

@@ -10,6 +10,7 @@ export class LessonTemplatesComponent implements OnInit {
   lessonTags;
   quizPrompts;
   notesTags;
+  min_characters = 5;
   newQuizPrompt: string;
   newNotesTag: string;
   newLessonTag: string;
@@ -37,25 +38,40 @@ export class LessonTemplatesComponent implements OnInit {
 //
 //SET TEMPLATES///////////////////////////////////////////////////////////////////////
   addLessonTag(){
-    console.log('addinglessontag'+ this.newLessonTag)
+    if(this.newLessonTag.length>this.min_characters){
+      console.log('addinglessontag'+ this.newLessonTag)
+      this.ts.setTag('L',this.newLessonTag)
+      this.newLessonTag = ""
+    }  
   }
 
   addNotesTag(){
-    console.log('addingnotestag'+ this.newNotesTag)
+    if(this.newNotesTag.length>this.min_characters){
+      console.log('addingnotestag'+ this.newNotesTag)
+      this.ts.setTag('N',this.newNotesTag)
+      this.newNotesTag = ""
+    } 
   }
 
   addQuizPrompt(){
-    console.log('addQuizPrompt'+ this.newQuizPrompt)
+    if(this.newQuizPrompt.length>this.min_characters){
+      console.log('addQuizPrompt'+ this.newQuizPrompt)
+      this.ts.setPrompt('L','Q',this.newQuizPrompt)
+      this.newQuizPrompt = ""
+    }
+
   }
 //END SET TEMPLATES///////////////////////////////////////////////////////////////////////
 //
 //
-  updateTemplate(id,template){
-    console.log(id+" : " + template)
-  }
-
+updateTemplate(template,text){
+  template.template = text  
+  console.log(template)
+  this.ts.updateTemplate(template) 
+}
   deleteTemplate(id){
     console.log(id+" : to be deleted" )
+    this.ts.deleteTemplate(id)
   }
 
 
