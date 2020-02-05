@@ -1,0 +1,45 @@
+
+.preview-container{
+    position: fixed;
+    top:0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 1px 1px 8px #ccc;
+    z-index: 51;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.preview-header{
+  display: flex;
+  font-weight: 600;
+  
+  display: flex;
+}
+
+.preview-title{
+     flex-grow: 1;
+     margin-left: 4px;
+ 
+}
+
+
+.preview-content{
+ 
+   display: flex;
+   align-items: center;
+   background-color: black;
+   color: crimson;
+   font-size: 1.2rem;
+   min-height: 200px;
+}
+
+
+
+.preview-submit-actions{
+    margin: 0px 4px 4px 0px;
+}

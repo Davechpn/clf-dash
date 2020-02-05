@@ -1,18 +1,72 @@
 <div style="height:100%">
-    <mat-vertical-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup">
+
+    <mat-vertical-stepper class="stepper" [linear]="isLinear" #stepper>
+        <mat-step>
          
             <ng-template matStepLabel>Details</ng-template>
-            <app-curriculum-details></app-curriculum-details>
+            <button (click)="openEdit()">edit</button>
+            <div>
+                <input *ngIf="view==='edit'" type="file" (change)="fileChangeEvent($event)" />
+                <div *ngIf="cropping && view==='edit'">
+                    <image-cropper
+                        [imageChangedEvent]="imageChangedEvent"
+                        [maintainAspectRatio]="true"
+                        [aspectRatio]="3 / 4"
+                        [resizeToWidth]="256"
+                        format="png"
+                        (imageCropped)="imageCropped($event)"
+                        (imageLoaded)="imageLoaded()"
+                        (cropperReady)="cropperReady()"
+                        (loadImageFailed)="loadImageFailed()"
+                    ></image-cropper>
+                    <img [src]="croppedImage" />
+                </div>
+            
+            </div>
+            
+            <div *ngIf="view==='read'">
+                <img class="currillum-cover" [src]="cover_image"/>
+            </div>
+            
+            <div class="details-form-container">
+                <form class="example-form" [formGroup]="detailsForm" (submit)="update()">
+                    <mat-form-field class="full-field-width">
+                      <input matInput placeholder="Title" formControlName="title" >
+                    </mat-form-field>
+            
+                    <mat-form-field class="full-field-width">
+                        <input matInput placeholder="Level" formControlName="level" >
+                      </mat-form-field>
+                    <mat-form-field class="full-field-width">
+                        <input matInput placeholder="Course Code" formControlName="course_code" >
+                      </mat-form-field>
+            
+                      <mat-form-field class="full-field-width">
+                        <input matInput placeholder="Duration" formControlName="duration" >
+                      </mat-form-field>
+                    <mat-form-field class="full-field-width">
+                      <textarea matInput placeholder="Description" formControlName="description"></textarea>
+                    </mat-form-field>
+            <div>
+                <button *ngIf="view==='edit'" mat-raised-button type="submit">Save</button>
+            </div>
+                 
+                </form>
+            </div>
+            
+              
             <div>
               <button mat-button matStepperNext>Next</button>
             </div>
        
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
+        <mat-step style="overflow-x: scroll;" >
          
             <ng-template matStepLabel>Topics</ng-template>
-           <app-topics></app-topics>
+            <div style="margin: 0px -30px 0px -22px;border: 1px solid tomato; overflow-x: scroll;">
+              <app-topics [curricula_id]="curricula_id"></app-topics>
+            </div>
+       
             <div>
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
@@ -20,7 +74,40 @@
        
         </mat-step>
 
-        <mat-step [stepControl]="secondFormGroup" >
+        <mat-step >
+         
+          <ng-template matStepLabel>Key Terms</ng-template>
+         <app-tutors></app-tutors>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+     
+      </mat-step>
+
+      <mat-step >
+         
+        <ng-template matStepLabel>Practicals</ng-template>
+       <app-tutors></app-tutors>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+   
+    </mat-step>
+
+    <mat-step >
+         
+      <ng-template matStepLabel>Fomulas</ng-template>
+     <app-tutors></app-tutors>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+ 
+  </mat-step>
+
+        <mat-step >
          
             <ng-template matStepLabel>Tutors</ng-template>
            <app-tutors></app-tutors>

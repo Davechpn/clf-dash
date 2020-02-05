@@ -1,0 +1,23 @@
+.tutor-item{
+   border: 1px solid tomato;
+}
+
+.tutor-avatar{
+    border: 1px solid grey;
+}
+
+.tutor-details{
+    border: 1px solid teal;
+}
+
+.tutor-persona{
+    border: 1px solid orange;
+}
+
+.tutor-name{
+    border: 1px solid rebeccapurple;
+}
+
+.tutor-actions{
+    border: 1px solid violet;
+}

@@ -19,10 +19,10 @@
         <div class="header-bottom-strip">
             <br/><br/>
                 <mat-form-field>
-                        <mat-label>Favorite food</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
+                        <mat-label>Curriculumn</mat-label>
+                        <mat-select [(ngModel)]="selected_curriculum">
+                          <mat-option *ngFor="let item of curricula" (click)="onSelect()" [value]="item">
+                            {{item.title}}
                           </mat-option>
                         </mat-select>
                 </mat-form-field> 
@@ -42,11 +42,11 @@
     </div>
     <div class="menu-item" [routerLink]="['/enrollment']" routerLinkActive="router-link-active" >
         <mat-icon>how_to_reg</mat-icon>
-        Enrollment
+        Students
     </div>
     <div class="menu-item" [routerLink]="['/studio']" routerLinkActive="router-link-active" >
         <mat-icon>spellcheck</mat-icon>
-        Studio
+        Library
     </div>
 
     <div class="menu-item" [routerLink]="['/careers']" routerLinkActive="router-link-active" >
@@ -58,7 +58,5 @@
         <mat-icon>chat_bubble_outline</mat-icon>
         Training
     </div>
-
- 
-    
+  
 </div>

@@ -11,6 +11,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { PreviewComponent } from './preview/preview.component';
 import { TrainingComponent } from './training/training.component';
 import { CareerGuidanceComponent } from './career-guidance/career-guidance.component';
+import { TopicsComponent } from './topics/topics.component';
 
 
 const routes: Routes = [

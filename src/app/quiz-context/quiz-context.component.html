@@ -1,0 +1,145 @@
+<div class="quiz-create-container">
+    <div class="quiz-create-header">
+        <div class="quiz-create-title">
+       <span *ngIf="view!=='edit'">Quiz - {{context.context}}</span> 
+       <input *ngIf="view==='edit'" [value]="context.context"/>  
+        </div>
+        <div class="quiz-create-close-actions">
+              <mat-icon *ngIf="view==='detail'" (click)="openEdit()">edit</mat-icon>
+              <mat-icon *ngIf="view==='edit'" (click)="closeEdit()">check</mat-icon>
+              <mat-icon (click)="close()">close</mat-icon>
+        </div>
+    
+    </div>
+    <div class="quiz-create-content">
+   
+       <div *ngIf="view==='new'" class="quiz-create-form">
+         <form [formGroup]="quizContextForm">
+            <mat-form-field class="full-field-width">
+              <input matInput placeholder="Context" formControlName="context"  >
+            </mat-form-field>
+
+            <mat-form-field class="full-field-width">
+              <input matInput placeholder="Number" formControlName="number" >
+            </mat-form-field>
+        
+         <div>
+          <mat-checkbox formControlName="multiplechoice">Multiplechoice</mat-checkbox>
+            
+         </div>
+         </form>
+
+         
+          
+       </div>
+       <div *ngIf="context.quiz_variants && view!='create'">
+        <div>Variants</div>
+        <div class="variant-section" *ngFor="let item of context.quiz_variants">
+    
+           <div class="variant-quiz">{{item.quiz}}</div>
+  
+
+      
+
+           <div>{{item.type}}</div>
+        
+           <div class="variant-answers-section">
+             <div class="variant-answers">
+               <div>Correct Answers</div>
+               <div *ngFor="let c_ans of item.alternate_ans">
+                 {{c_ans}}
+               </div>
+             </div>
+             <div class="variant-answers">
+               <div>Wrong Answers</div>
+               <div *ngFor="let w_ans of item.semblences">
+                 {{w_ans}}
+
+               </div>
+             </div>
+           </div>
+
+           <div *ngIf="view==='edit'" class="variant-answers-actions">
+              <div style="flex-grow: 1;">
+                <mat-icon>delete_outline</mat-icon>
+              </div> 
+              <div>
+                <mat-icon>edit</mat-icon>    
+              </div>
+                
+                
+           </div>
+          </div>
+  
+       
+        </div>
+ 
+
+
+    
+       <div *ngIf="view==='create'" class="quiz-variant-form">
+        <div>New Variant</div>
+        <form [formGroup]="quizVariantForm">
+          <mat-form-field class="full-field-width">
+            <mat-select placeholder="Type" formControlName="content_type" >
+              <mat-option *ngFor="let type of quiz_types" [value]="type">
+                   {{type}}
+               </mat-option>
+          </mat-select>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="quizVariantForm.value.content_type==='text'"  class="full-field-width">
+            <input matInput placeholder="Quiz" formControlName="quiz">
+          </mat-form-field>
+
+          <input *ngIf="quizVariantForm.value.content_type==='image'" type="file"/>
+
+        </form>
+         <div class="variant-answers-section-create">
+           <div class="variant-answers">
+             <div>Correct Answers</div>
+             <div class="answer">
+              <input class="answer-input" type=""/>
+              <mat-icon>close</mat-icon>
+             </div>
+             <div class="answer">
+              <input class="answer-input" type=""/>
+              <mat-icon>check</mat-icon>
+             </div>
+           </div>
+           <div class="variant-answers">
+             <div>Wrong Answers</div>
+              <div class="answer">
+               <input class="answer-input" type=""/>
+               <mat-icon>close</mat-icon>
+              </div>
+
+              <div class="answer">
+                <input class="answer-input" type=""/>
+                <mat-icon>check</mat-icon>
+               </div>
+           </div>
+         </div>
+
+          
+   
+
+       </div>
+    </div>
+    <div class="quiz-create-footer">
+      <div class="quiz-create-submit-actions"> 
+          <div style="flex-grow: 1;">
+              <mat-icon *ngIf="view==='edit'" >delete</mat-icon>
+          </div> 
+          <div>
+            <button mat-mini-fab>
+                <mat-icon *ngIf="view==='detail'||view==='edit'" (click)="view='create'">add</mat-icon>
+                <mat-icon *ngIf="view==='create'||view=== 'new'" (click)="view='detail'">check</mat-icon>
+               </button>
+          </div>
+     
+      
+    </div>
+  </div>
+</div>
+

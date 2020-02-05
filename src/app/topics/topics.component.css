@@ -1,0 +1,157 @@
+.tree-container{
+overflow-x: scroll;
+}
+.topic-header{
+  border:1px solid lightcoral;
+  display: flex;
+  width: 250px;
+}
+.topic-title{
+  border:1px solid springgreen;
+  flex-grow: 1;
+}
+
+.topic-actions{
+   border: 1px solid yellow;
+}
+
+.topic-edit-template{
+    border: 1px solid crimson;
+   background-color: white;
+    width: 250px;
+    min-height: 100px;
+}
+
+.topic-edit-content{
+  border: 1px solid sandybrown;
+  min-height:75px ;
+  margin: 6px;
+  display: flex;
+}
+
+.topic-edit-content-item{
+  width: 30%;
+  margin-right: 2%;
+  display: flex;
+  flex-direction: column;
+  background-color:white;
+  border: 1px solid wheat;
+  box-shadow: 1px 1px 6px #ccc;
+}
+
+.topic-edit-content-icon{
+  border: 1px solid lime;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.topic-edit-content-footer{
+  display: flex;
+}
+.topic-pass-rate-section{
+  border: 1px solid black;
+  display: flex; 
+  justify-content: flex-end;
+}
+
+.topic-pass-rate{
+    color:orange;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.topic-edit-headers{
+   font-size: 1rem;
+   font-weight: 600;
+}
+
+.topic-edit-content-action-left{
+  flex-grow: 1;
+  padding: 0px 8px;
+ 
+}
+
+.topic-edit-content-action-right{
+  padding: 0px 8px;
+  border: 1px solid teal;
+ 
+}
+
+.topic-edit-content-action-button{
+ font-size: 1rem;
+ margin: 0px -16px -8px -6px;
+}
+
+.full-field-width{
+  width: 100%;
+}
+
+.node-content-wrapper, .tree-children {
+  position: relative;
+}
+
+.node-content-wrapper::before, .tree-children::after {
+  content: "";
+  position: absolute;
+}
+
+.node-content-wrapper::before {
+  border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  height: 28px;
+  top: -17px;
+  width: 20px;
+  left: -28px;
+}
+
+.tree-node-level-1 > tree-node-wrapper > .node-wrapper > .node-content-wrapper::before {
+  display: none;
+}
+
+.tree-node-leaf > .node-wrapper > .node-content-wrapper::before {
+  width: 25px;
+}
+
+.tree-children::after {
+  border-left: 1px solid lightgrey;
+  height: 100%;
+  top: -15px;
+  left: -15px;
+}
+
+tree-node:last-child > .tree-node > .tree-children::after {
+  border-left: none;
+}
+
+.toggle-children {
+  z-index: 1;
+}
+
+
+/*Quiz Section*/
+
+.topic-quiz-section{
+  border: 1px solid slateblue;
+}
+
+.topic-quiz-header{
+  border: 1px solid fuchsia;
+  display: flex;
+  align-items: center;
+}
+
+
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+

@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartDataSets,ChartType, ChartOptions } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
-
+import { CurriculumService} from '../curriculum.service';
+//import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 
 @Component({
@@ -11,10 +12,24 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
 })
 export class DashboardComponent implements OnInit {
 
+  @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
+
+  constructor(private curriculum_service:CurriculumService) { }
+  current_curriculum
+  ngOnInit() {
+      this.curriculum_service.current_curriculum
+      .subscribe(x=>{
+        if(x){
+          this.current_curriculum = x
+        }
+          
+      })
+  }
   public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    { data: [180, 480, 770, 90, 1000, 270, 400], label: 'Series C', yAxisID: 'y-axis-1' }
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Subscriptions' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Registrations' },
+    { data: [20, 40, 49, 39, 86, 27, 60], label: 'Completions' },
+    { data: [180, 480, 770, 90, 1000, 270, 400], label: 'Activity', yAxisID: 'y-axis-1' }
   ];
   public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
@@ -87,12 +102,6 @@ export class DashboardComponent implements OnInit {
   public lineChartType = 'line';
 
 
-  @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   public randomize(): void {
     for (let i = 0; i < this.lineChartData.length; i++) {
@@ -160,5 +169,61 @@ export class DashboardComponent implements OnInit {
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
     { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
   ];
+
+
+    // Pie
+    public pieChartOptions: ChartOptions = {
+      responsive: true,
+      legend: {
+        position: 'top',
+      },
+      plugins: {
+        datalabels: {
+          formatter: (value, ctx) => {
+            const label = ctx.chart.data.labels[ctx.dataIndex];
+            return label;
+          },
+        },
+      }
+    };
+    public pieChartLabels: Label[] = ['Maths', 'Chemstry', 'Biology'];
+    public pieChartData: number[] = [300, 500, 100];
+    public pieChartType: ChartType = 'pie';
+    public pieChartLegend = true;
+   // public pieChartPlugins = [pluginDataLabels];
+    public pieChartColors = [
+      {
+        backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
+      },
+    ];
+
+
+
+
+  changeLabels() {
+    const words = ['hen', 'variable', 'embryo', 'instal', 'pleasant', 'physical', 'bomber', 'army', 'add', 'film',
+      'conductor', 'comfortable', 'flourish', 'establish', 'circumstance', 'chimney', 'crack', 'hall', 'energy',
+      'treat', 'window', 'shareholder', 'division', 'disk', 'temptation', 'chord', 'left', 'hospital', 'beef',
+      'patrol', 'satisfied', 'academy', 'acceptance', 'ivory', 'aquarium', 'building', 'store', 'replace', 'language',
+      'redeem', 'honest', 'intention', 'silk', 'opera', 'sleep', 'innocent', 'ignore', 'suite', 'applaud', 'funny'];
+    const randomWord = () => words[Math.trunc(Math.random() * words.length)];
+    this.pieChartLabels = Array.apply(null, { length: 3 }).map(_ => randomWord());
+  }
+
+  addSlice() {
+    this.pieChartLabels.push(['Line 1', 'Line 2', 'Line 3']);
+    this.pieChartData.push(400);
+    this.pieChartColors[0].backgroundColor.push('rgba(196,79,244,0.3)');
+  }
+
+  removeSlice() {
+    this.pieChartLabels.pop();
+    this.pieChartData.pop();
+    this.pieChartColors[0].backgroundColor.pop();
+  }
+
+  changeLegendPosition() {
+    this.pieChartOptions.legend.position = this.pieChartOptions.legend.position === 'left' ? 'top' : 'left';
+  }
 
 }

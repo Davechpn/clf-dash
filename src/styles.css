@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~angular-tree-component/dist/angular-tree-component.css';
 
+body{
+    overscroll-behavior: contain;
+}
 *:focus {
     outline: none !important;
     border: 0 !important;
@@ -8,7 +12,7 @@
 
 .fab-section{
     position:fixed;
-    bottom:68px;
+    bottom:64px;
     right:8px;
     height:44px;
     width: 44px;
@@ -17,7 +21,7 @@
 
 .search-section{
     position:fixed;
-    bottom:68px;
+    bottom:64px;
     right:64px;
     left:18px;
     height:44px;
@@ -38,11 +42,11 @@
 /*Templating*/
 
 .template-container{
-    border: 1px solid #ccc;
+  background-color: white;
 }
 
 .template-section{
-    border: 1px dashed #ddd;
+    border-bottom: 1px dashed #ddd;
     display:flex;
     align-items: center;
     width: 100%;
@@ -50,4 +54,14 @@
 
 .template-input{ 
     flex-grow: 1;
+    border: 0;
+    outline: none;
+}
+
+.template-headers{
+    font-weight: 600;
+}
+
+.full-field-width{
+    width: 100%;
 }

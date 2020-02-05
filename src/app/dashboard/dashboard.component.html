@@ -1,17 +1,48 @@
 <div class="count-strip">
-  <div class="count-item">
+  <div class="count-item"  style="flex-grow: 1;">
       <div class="count-item-count">100</div>
-      <div>students</div>
+      <div>Pass</div>
+  </div>
+  <div class="count-item" style="flex-grow: 1;">
+        <div class="count-item-count">100</div>
+        <div>Total</div>
   </div>
   <div class="count-item">
-        <div class="count-item-count">100</div>
-        <div>subs</div>
-  </div>
-  <div class="count-item">
-        <div class="count-item-count">100</div>
-        <div>courses</div>
+      
+          <div style="display: flex;">
+            <div style="width: 60px;">Male</div>
+            <div>80</div>
+          </div>  
+          <div style="display: flex;">
+          <div style="width: 60px;">Female</div>
+             <div>20</div>
+        </div>
   </div>
 </div>
+
+<div *ngIf="current_curriculum.id==='all'">
+  <div>
+    <div class="chart">
+      <canvas baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+       
+      
+        [colors]="pieChartColors"
+        [legend]="pieChartLegend">
+      </canvas>
+    </div>
+  </div>
+</div>
+<!-- <div>
+  <button mat-button mat-raised-button color="primary" (click)="pieChartLegend=!pieChartLegend">Toggle Legend</button>
+  <button mat-button mat-raised-button color="primary" (click)="changeLabels()">Change Labels</button>
+  <button mat-button mat-raised-button color="primary" (click)="addSlice()">Add Slice</button>
+  <button mat-button mat-raised-button color="primary" (click)="removeSlice()">Remove Slice</button>
+  <button mat-button mat-raised-button color="primary" (click)="changeLegendPosition()">Change Legend Position</button>
+</div> -->
 
 <div style="display: block;">
         <canvas baseChart width="400" height="400"
@@ -25,7 +56,7 @@
                  ></canvas>
 </div>
 
-<div style="display: block">
+<!-- <div *ngIf="current_curriculum.id ==='all'" style="display: block">
         <canvas baseChart
           [datasets]="barChartData"
           [labels]="barChartLabels"
@@ -34,5 +65,5 @@
           [legend]="barChartLegend"
           [chartType]="barChartType">
         </canvas>
-      </div>
+      </div> -->
 

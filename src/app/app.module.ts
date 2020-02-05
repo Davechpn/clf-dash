@@ -17,11 +17,13 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { CdkStepperModule} from '@angular/cdk/stepper';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { TreeModule } from 'angular-tree-component';
 import { 
   MatFormFieldModule,
   MatAutocompleteModule,
   MatButtonModule,
   MatBadgeModule,
+  MatTreeModule,
   MatButtonToggleModule,
   MatCardModule,
   MatDatepickerModule,
@@ -52,7 +54,6 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { ContentComponent } from './content/content.component';
 import { StatsComponent } from './stats/stats.component';
 import { SearchComponent } from './search/search.component';
 import { environment } from '../environments/environment';
@@ -67,9 +68,11 @@ import { CgTemplatesComponent } from './templating/cg-templates/cg-templates.com
 import { RegistrationTemplatesComponent } from './templating/registration-templates/registration-templates.component';
 import { SharingTemplatesComponent } from './templating/sharing-templates/sharing-templates.component';
 import { TopicsComponent } from './topics/topics.component';
-import { CurriculumDetailsComponent } from './curriculum-details/curriculum-details.component';
 import { TutorsComponent } from './tutors/tutors.component';
 import { CareerGuidanceComponent } from './career-guidance/career-guidance.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { SelectContentComponent } from './select-content/select-content.component';
+import { QuizContextComponent } from './quiz-context/quiz-context.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +86,6 @@ import { CareerGuidanceComponent } from './career-guidance/career-guidance.compo
     LoginComponent,
     LayoutComponent,
     PreviewComponent,
-    ContentComponent,
     StatsComponent,
     SearchComponent,
     CurriculumComponent,
@@ -96,9 +98,10 @@ import { CareerGuidanceComponent } from './career-guidance/career-guidance.compo
     RegistrationTemplatesComponent,
     SharingTemplatesComponent,
     TopicsComponent,
-    CurriculumDetailsComponent,
     TutorsComponent,
-    CareerGuidanceComponent
+    CareerGuidanceComponent,
+    SelectContentComponent,
+    QuizContextComponent
   ],
   imports: [
     BrowserModule,
@@ -110,8 +113,11 @@ import { CareerGuidanceComponent } from './career-guidance/career-guidance.compo
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
+    TreeModule.forRoot(),
+    ImageCropperModule,
     //Material Modules Below
     MatFormFieldModule,
+    MatTreeModule,
     MatDatepickerModule,
     MatAutocompleteModule,
     MatButtonModule,

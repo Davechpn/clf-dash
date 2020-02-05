@@ -1,1 +1,91 @@
-<p>topics works!</p>
+<div class="" style="border:1px solid black;height: 400px;width: 1000px; overflow: scroll;">
+  <tree-root  #tree [options]="options" [nodes]="nodes">
+    <ng-template style="border: 1px solid teal;" #treeNodeTemplate let-node let-index="index">
+      <div class="topic-header">
+        <div class="topic-title" (click)="open()">{{ node.data.name }}</div>
+        <div class="topic-actions" >
+          <span *ngIf="current_edit !== node.data.id" (click)="openEdit(node.data)">Edit</span>
+          <span *ngIf="current_edit === node.data.id" (click)="closeEdit(node.data)">Close</span>
+        </div>
+      </div>
+    
+      <div *ngIf="current_edit === node.data.id" class="topic-edit-template" >
+        <div>
+          <mat-form-field class="full-field-width">
+            <input matInput placeholder="Title" [(ngModel)]="current_topic_name" >
+          </mat-form-field>
+       
+        </div>
+      
+        <div class="topic-edit-content">
+          <div class="topic-edit-content-item">
+            <div class="topic-edit-content-title">
+               Intro
+            </div>
+            <div class="topic-edit-content-icon" (click)="selectContent('intro')">
+               <mat-icon>dashboard</mat-icon>
+            </div>
+            <div class="topic-edit-content-footer">
+  
+            </div>
+          </div>
+
+          <div class="topic-edit-content-item">
+            <div class="topic-edit-content-title">
+                Lesson
+            </div>
+            <div class="topic-edit-content-icon" (click)="selectContent('lesson')">
+               <mat-icon>add</mat-icon>
+            </div>
+          </div>
+
+          <div class="topic-edit-content-item">
+            <div class="topic-edit-content-title">
+                Notes
+            </div>
+            <div class="topic-edit-content-icon" (click)="selectContent('notes')">
+               <mat-icon>dashboard</mat-icon>
+            </div>
+            <div class="topic-edit-content-footer">
+  
+            </div>
+          </div>
+
+        </div>
+
+        <div class="topic-quiz-section">
+           <div class="topic-quiz-header">
+             <div style="flex-grow: 1;">Quiz Contexts</div>
+             <div>
+               <button mat-button (click)="openQuiz('new')">
+                 <mat-icon>add</mat-icon>add
+               </button>
+             </div>
+           </div>
+           
+           <div class="topic-quiz-content">
+               <div *ngFor="let item of quiz_contexts" class="topic-quiz-context">
+                  <div (click)="openQuiz(item)">{{item.number}}. {{item.context}}</div>  
+               </div>
+
+       <div class="topic-pass-rate-section">
+        <div class="topic-pass-rate">PassRate</div>
+      </div>
+           </div>
+      </div>
+       
+        <div>
+          <div><button (click)="selectContent('Topic Dependencies')" mat-button>Dependancies</button><button (click)="selectContent('applications')" mat-button>Applications</button></div>
+       </div>
+
+
+      </div>
+  
+    </ng-template>
+  </tree-root>
+</div>
+
+
+<app-select-content *ngIf="show_select_content" (onClose)="show_select_content=false" [curricula_id]="curricula_id" [topic_id]="current_topic_id" [content_type]="select_content_type"></app-select-content>
+<app-preview *ngIf="show_preview" (onClose)="show_preview=false"></app-preview>
+<app-quiz-context *ngIf="show_quiz" (onClose)="show_quiz=false" [context]="selected_quiz_context"></app-quiz-context>
