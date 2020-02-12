@@ -74,6 +74,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { SelectContentComponent } from './select-content/select-content.component';
 import { QuizContextComponent } from './quiz-context/quiz-context.component';
 
+import { NewCurriculumComponent } from './new-curriculum/new-curriculum.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +103,8 @@ import { QuizContextComponent } from './quiz-context/quiz-context.component';
     TutorsComponent,
     CareerGuidanceComponent,
     SelectContentComponent,
-    QuizContextComponent
+    QuizContextComponent,
+    NewCurriculumComponent
   ],
   imports: [
     BrowserModule,

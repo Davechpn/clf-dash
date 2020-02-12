@@ -6,5 +6,5 @@
 </div>
       
 <div *ngIf="search_mode" class="search-section">
-    <input type="text" style="text-align: center;" id="search-text-box" (keyup)="filter($event.target.value)"/>
+    <input type="text" style="text-align: center;" id="search-text-box" (keyup)="filter($event.target.value)" autocomplete="off"/>
 </div>

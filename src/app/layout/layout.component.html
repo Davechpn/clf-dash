@@ -9,6 +9,7 @@
                     <button mat-menu-item [routerLink]="['/admins']" routerLinkActive="router-link-active" >Admins</button>
                     <button mat-menu-item [routerLink]="['/payments']" routerLinkActive="router-link-active" >Payments</button>
                     <button mat-menu-item [routerLink]="['/account']" routerLinkActive="router-link-active" >My Account</button>
+                    <button mat-menu-item [routerLink]="['/training']" routerLinkActive="router-link-active" >NLP</button>
                     </mat-menu>
                 </div>
 
@@ -36,27 +37,21 @@
 
 
 <div class="footer">
-    <div class="menu-item" [routerLink]="['/home']" routerLinkActive="router-link-active" >
+
+    <div class="menu-item menu-item-first" [routerLink]="['/library']" routerLinkActive="router-link-active" >
+        <mat-icon class="menu-item-first-icon"> local_library</mat-icon>
+        <span style="margin-bottom: 8px;">Library</span>
+    </div>
+
+
+
+    <div class="menu-item" [routerLink]="['/analytics']" routerLinkActive="router-link-active" >
         <mat-icon>timeline</mat-icon>
-        Dash
+        Analytics
     </div>
     <div class="menu-item" [routerLink]="['/enrollment']" routerLinkActive="router-link-active" >
         <mat-icon>how_to_reg</mat-icon>
         Students
-    </div>
-    <div class="menu-item" [routerLink]="['/studio']" routerLinkActive="router-link-active" >
-        <mat-icon>spellcheck</mat-icon>
-        Library
-    </div>
-
-    <div class="menu-item" [routerLink]="['/careers']" routerLinkActive="router-link-active" >
-        <mat-icon>emoji_people</mat-icon>
-        Careers
-    </div>
-
-    <div class="menu-item" [routerLink]="['/training']" routerLinkActive="router-link-active" >
-        <mat-icon>chat_bubble_outline</mat-icon>
-        Training
     </div>
   
 </div>

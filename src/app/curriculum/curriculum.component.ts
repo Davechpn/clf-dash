@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import {ActivatedRoute} from '@angular/router'
 
 @Component({
   selector: 'app-curriculum',
@@ -17,11 +18,14 @@ export class CurriculumComponent implements OnInit {
   cropping:boolean;
   cover_image: any;
   isLinear = false;
+  curricula_id;
 
-  curricula_id = 'rXvHt3UmAAKsSaxWtvXT'
-  constructor(private db:AngularFirestore, private fb:FormBuilder) {}
+  constructor(private route:ActivatedRoute, private db:AngularFirestore, private fb:FormBuilder) {}
 
   ngOnInit() {
+    this.route.params.subscribe(x=>{
+      this.curricula_id = x.id;
+    })
     this.getDetails(this.curricula_id)
     this.detailsForm = this.fb.group({
       title:['',[Validators.required]],
@@ -98,6 +102,7 @@ export class CurriculumComponent implements OnInit {
 
   update(){
     if(this.croppedImage){
+
       this.detailsForm.value.cover_image = this.croppedImage
     }
     console.log(this.detailsForm.value)

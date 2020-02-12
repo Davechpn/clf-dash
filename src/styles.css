@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~angular-tree-component/dist/angular-tree-component.css';
+@import "~./assets/material-icons-font.css";
 
 body{
     overscroll-behavior: contain;
@@ -12,7 +13,7 @@ body{
 
 .fab-section{
     position:fixed;
-    bottom:64px;
+    bottom:62px;
     right:8px;
     height:44px;
     width: 44px;
@@ -21,7 +22,7 @@ body{
 
 .search-section{
     position:fixed;
-    bottom:64px;
+    bottom:62px;
     right:64px;
     left:18px;
     height:44px;
@@ -38,6 +39,12 @@ body{
     box-shadow: 1px 1px 10px  #ddd;
 }
 
+
+
+.mat-step-label{
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+  }
 
 /*Templating*/
 
@@ -64,4 +71,8 @@ body{
 
 .full-field-width{
     width: 100%;
+}
+
+.full-field-width-h{
+    width: 50%;
 }

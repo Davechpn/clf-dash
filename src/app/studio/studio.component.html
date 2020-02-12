@@ -1,9 +1,31 @@
 
-<app-curriculum></app-curriculum>
- 
+<div >
+    <mat-grid-list cols="2" rowHeight="8:11" gutterSize="4px">
+        <mat-grid-tile *ngFor="let item of curricula">
+           <div class="curricullum-book" (click)="onSelect(item)">
+               <img class="currillum-cover" [src]="item.cover_image"/>
+           </div>
+       
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="curricullum-book" (click)="selectSpecial('mortivation')">
+                <img class="currillum-cover"  src="../../assets/img/mortivation5.jpg"/>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <div class="curricullum-book" [routerLink]="['/careers']" routerLinkActive="router-link-active" >
+                <img class="currillum-cover"  src="../../assets/img/careers.jpg"/>
+            </div>
+        </mat-grid-tile>
       
+      </mat-grid-list>
+      
+</div>
+
+
 <div class="fab-section">
-        <button mat-mini-fab>
+        <button [routerLink]="['/curriculum/new']" routerLinkActive="router-link-active"  mat-mini-fab>
             <mat-icon>add</mat-icon>
         </button>
        

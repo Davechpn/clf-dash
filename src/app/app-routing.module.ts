@@ -12,20 +12,30 @@ import { PreviewComponent } from './preview/preview.component';
 import { TrainingComponent } from './training/training.component';
 import { CareerGuidanceComponent } from './career-guidance/career-guidance.component';
 import { TopicsComponent } from './topics/topics.component';
+import { CurriculumComponent } from './curriculum/curriculum.component';
+import { SelectContentComponent } from './select-content/select-content.component';
+import { NewCurriculumComponent } from './new-curriculum/new-curriculum.component';
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'home',pathMatch:'full'},
+  {path:'',redirectTo:'library',pathMatch:'full'},
   {path:'',component:LayoutComponent,children:[
-      {path:'home',component:DashboardComponent},
+      {path:'analytics',component:DashboardComponent},
       {path:'enrollment',component:EnrollmentComponent},
       {path:'payments',component:PaymentsComponent},
-      {path:'studio',component:StudioComponent},
+      {path:'library',component:StudioComponent},
+      {path:'curriculum/new',component:NewCurriculumComponent},
+      {path:'curriculum/:id', component:CurriculumComponent,children:[
+        {path:'topics',component:TopicsComponent, children:[
+          {path:':id/content/:type',component:SelectContentComponent}
+        ]}
+      ]},
       {path:'admins',component:AdminsComponent},
       {path:'account',component:AccountComponent},
       {path:'preview',component:PreviewComponent},
       {path:'training',component:TrainingComponent},
-      {path:'careers',component:CareerGuidanceComponent}
+      {path:'careers',component:CareerGuidanceComponent},
+  
     ]
   },
   {path:'login',component:LoginComponent}

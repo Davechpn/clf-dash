@@ -4,15 +4,19 @@
       <div class="topic-header">
         <div class="topic-title" (click)="open()">{{ node.data.name }}</div>
         <div class="topic-actions" >
-          <span *ngIf="current_edit !== node.data.id" (click)="openEdit(node.data)">Edit</span>
-          <span *ngIf="current_edit === node.data.id" (click)="closeEdit(node.data)">Close</span>
+          <span *ngIf="current_edit !== node.data.id" (click)="openEdit(node.data)">
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </span>
+          <span *ngIf="current_edit === node.data.id" (click)="closeEdit(node.data)">
+            <mat-icon>keyboard_arrow_up</mat-icon>
+          </span>
         </div>
       </div>
     
       <div *ngIf="current_edit === node.data.id" class="topic-edit-template" >
         <div>
           <mat-form-field class="full-field-width">
-            <input matInput placeholder="Title" [(ngModel)]="current_topic_name" >
+            <input matInput placeholder="Title" [(ngModel)]="current_topic_name" autocomplete="off">
           </mat-form-field>
        
         </div>
@@ -23,7 +27,7 @@
                Intro
             </div>
             <div class="topic-edit-content-icon" (click)="selectContent('intro')">
-               <mat-icon>dashboard</mat-icon>
+               <mat-icon>videocam</mat-icon>
             </div>
             <div class="topic-edit-content-footer">
   
@@ -35,7 +39,7 @@
                 Lesson
             </div>
             <div class="topic-edit-content-icon" (click)="selectContent('lesson')">
-               <mat-icon>add</mat-icon>
+               <mat-icon>videocam</mat-icon>
             </div>
           </div>
 
@@ -44,7 +48,7 @@
                 Notes
             </div>
             <div class="topic-edit-content-icon" (click)="selectContent('notes')">
-               <mat-icon>dashboard</mat-icon>
+               <mat-icon>notes</mat-icon>
             </div>
             <div class="topic-edit-content-footer">
   
@@ -69,13 +73,14 @@
                </div>
 
        <div class="topic-pass-rate-section">
-        <div class="topic-pass-rate">PassRate</div>
+        <div class="topic-pass-rate" [routerLink]="['4QNDgi2keLzExIosMTeC/content/notes']" routerLinkActive="router-link-active" >PassRate</div>
+        <router-outlet></router-outlet>
       </div>
            </div>
       </div>
        
         <div>
-          <div><button (click)="selectContent('Topic Dependencies')" mat-button>Dependancies</button><button (click)="selectContent('applications')" mat-button>Applications</button></div>
+          <div><button (click)="selectContent('dependencies')" mat-button>Dependancies</button><button (click)="selectContent('applications')" mat-button>Applications</button></div>
        </div>
 
 

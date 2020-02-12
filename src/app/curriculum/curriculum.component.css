@@ -1,8 +1,23 @@
 .stepper{
     margin-left: -24px;
     margin-top: -24px;
+    
+}
+
+
+.step-title{
+    z-index: 100;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.step-title-text{
+   flex-grow: 1;
 }
 
 .currillum-cover{
     box-shadow: 1px 1px 6px #666;
+    width: 100%;
 }

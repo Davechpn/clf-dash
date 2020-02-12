@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ContentService} from '../content.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { HostListener } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+import { CurriculumService} from '../curriculum.service';
 
 export interface PeriodicElement {
   name: string;
@@ -27,6 +31,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./select-content.component.css']
 })
 export class SelectContentComponent implements OnInit {
+
+@HostListener('window:popstate', ['$event'])
+  onPopState(event) {
+    console.log('Back button pressed');
+    //Here you can handle your modal
+  }
+  
   @Input()content_type
   @Input()curricula_id
   @Input()topic_id
@@ -34,9 +45,22 @@ export class SelectContentComponent implements OnInit {
   displayedColumns: string[] = ['name'];
   dataSource;// = ELEMENT_DATA;
   view ='detail';
-  constructor(private cs:ContentService) { }
+  constructor(private curriculum_service:CurriculumService,private route:ActivatedRoute, private cs:ContentService) {
+    this.route.params.subscribe(x=>{
+      console.log(x)
+      this.topic_id = x.id,
+      this.content_type = x.type
+    })
+   }
 
   ngOnInit() {
+    this.curriculum_service.current_curriculum
+    .subscribe(x=>{
+      if(x){
+        this.curricula_id = x.id
+        console.log(this.curricula_id)
+      }   
+    })
     switch (this.content_type) {
       case 'intro':
         this.getIntros()
@@ -65,41 +89,41 @@ export class SelectContentComponent implements OnInit {
      this.cs.getIntro(this.topic_id, this.curricula_id)
      .subscribe(x=>{
        
-       this.dataSource = x
+       this.dataSource = new MatTableDataSource<any>(x);
      })
   }
   getLessons(){
     this.cs.getLessons(this.topic_id, this.curricula_id)
     .subscribe(x=>{
-      this.dataSource = x
+      this.dataSource = new MatTableDataSource<any>(x);
     })
   }
 
   getNotes(){
     this.cs.getNotes(this.topic_id, this.curricula_id)
     .subscribe(x=>{
-      this.dataSource = x
+      this.dataSource = new MatTableDataSource<any>(x);
     })
   }
 
   getDeps(){
      this.cs.getDeps(this.curricula_id)
      .subscribe(x=>{
-       this.dataSource = x
+       this.dataSource = new MatTableDataSource<any>(x);
      })
   }
 
   getApplications(){
      this.cs.getApplications()
      .subscribe(x=>{
-       this.dataSource = x
+       this.dataSource = new MatTableDataSource<any>(x);
      })
   }
 
   getAll(){
     this.cs.getAll(this.content_type)
     .subscribe(x=>{
-      this.dataSource = x
+      this.dataSource = new MatTableDataSource<any>(x);
     })
   }
 
@@ -135,8 +159,9 @@ export class SelectContentComponent implements OnInit {
     this.view = 'detail'
   }
 
-  filter(value){
-     console.log(value)
+  filter(filterValue){
+     console.log(filterValue)
+     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

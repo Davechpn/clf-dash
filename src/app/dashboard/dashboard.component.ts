@@ -13,16 +13,15 @@ import { CurriculumService} from '../curriculum.service';
 export class DashboardComponent implements OnInit {
 
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
-
-  constructor(private curriculum_service:CurriculumService) { }
   current_curriculum
+  constructor(private curriculum_service:CurriculumService) { }
+  
   ngOnInit() {
       this.curriculum_service.current_curriculum
       .subscribe(x=>{
         if(x){
           this.current_curriculum = x
-        }
-          
+        }   
       })
   }
   public lineChartData: ChartDataSets[] = [

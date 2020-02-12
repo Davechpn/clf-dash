@@ -1,0 +1,119 @@
+<div>
+  <h2>New Curriculum</h2>
+</div>
+<div>
+ 
+
+   
+ 
+
+</div>
+
+
+
+<div class="details-form-container">
+    <form class="example-form" [formGroup]="detailsForm" (submit)="update()">
+      <div class="form-width-section">
+        <div class="form-width-h" style="padding-right: 4px;">
+          <div *ngIf="!croppedImage" class="form-width-h upload-cover-area" (click)="fileInput.click()">
+            Upload cover
+            <input #fileInput type="file" accept="image/*" (change)="fileChangeEvent($event)" style="display:none;" />
+          </div> 
+          <div *ngIf="cropping">
+            <image-cropper
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="8 / 11"
+                [resizeToWidth]="256"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()"
+            ></image-cropper>
+            <!-- <img [src]="croppedImage" /> -->
+        </div>
+        </div>
+   
+  
+        <div class="form-width-h" style="padding-left: 4px;width: 50%;">
+          <mat-form-field class="full-field-width">
+            <input matInput placeholder="Title" formControlName="title" >
+            <mat-error *ngIf="title.errors?.required && title.touched">
+              Title is required
+            </mat-error>
+            <mat-error *ngIf="title.errors?.minlength && title.touched">
+              Title too short
+            </mat-error>
+            <mat-error *ngIf="title.errors?.maxlength && title.touched">
+              Title too long
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-field-width">
+  
+            <mat-select placeholder="Level" formControlName="level">
+              <mat-option *ngFor="let level of levels" [value]="level">
+                   {{level}}
+               </mat-option>
+              </mat-select>
+              <mat-error *ngIf="level.errors?.required && level.touched">
+                Level is required
+              </mat-error>
+            </mat-form-field>
+
+
+        <mat-form-field class="full-field-width">
+          <input matInput placeholder="Course Code" formControlName="course_code" >
+          <mat-error *ngIf="course_code.errors?.required && course_code.touched">
+            Course code is required
+          </mat-error>
+
+        </mat-form-field>
+        </div>
+      </div>
+  
+
+
+<div style="width: 100%;">
+  <mat-form-field class="full-field-width-h">
+    <input matInput placeholder="Duration" formControlName="duration">
+    <mat-error *ngIf="duration.errors?.required && duration.touched">
+      Duration is required
+    </mat-error>
+    <mat-error *ngIf="duration.errors?.pattern && duration.touched">
+      Duration must be numbers
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-field-width-h">
+    <mat-select placeholder="Duration Unit" formControlName="duration_unit">
+      <mat-option *ngFor="let unit of duration_units" [value]="unit">
+           {{unit}}
+       </mat-option>
+      </mat-select>
+  </mat-form-field>
+</div>
+         
+       
+          <mat-form-field class="full-field-width">
+           <textarea matInput placeholder="Description" formControlName="description"></textarea>
+           <mat-error *ngIf="description.errors?.required && description.touched">
+            Description is required
+           </mat-error>
+           <mat-error *ngIf="description.errors?.minlength && description.touched">
+            Description is too shot
+           </mat-error>
+          </mat-form-field>
+
+     
+    </form>
+</div>
+
+<div class="fab-section">
+  <button [disabled]="detailsForm.invalid || (!croppedImage)" [routerLink]="['/curriculum/new']" (click)="save()" routerLinkActive="router-link-active"  mat-mini-fab>
+      <mat-icon>check</mat-icon>
+  </button>
+ 
+</div> 
+
+

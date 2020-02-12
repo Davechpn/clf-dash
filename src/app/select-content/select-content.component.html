@@ -1,7 +1,7 @@
 <div class="select-container">
     <div class="select-header">
         <div class="select-title">
-          <div>Current {{content_type}}</div>
+          <div>{{content_type  | titlecase}}</div>
 
          
         </div>
@@ -23,18 +23,19 @@
               <td mat-cell *matCellDef="let element"> 
                 
                 <div class="content-item">
-                  <div *ngIf="view==='edit'" class="content-item-select">
+                  <div class="content-item-select" *ngIf="view==='edit'">
                     <mat-checkbox></mat-checkbox>
                   </div>
-                  <div (click)="openPreview()" class="content-item-icon">
-                    <img class="content-item-icon-png" src="../../assets/icons/pdf-icon-1.png">
+                  <div class="content-item-icon" (click)="openPreview()" >
+                    <img *ngIf="content_type==='notes'" class="content-item-icon-png" src="../../assets/icons/pdf-icon-1.png">
                   </div>
                   <div class="content-item-details">
-                     <div (click)="openPreview()" class="content-item-details-middle">{{element.title}} </div>
-                     <div class="content-item-details-bottom">{{element.mime_type}} {{element.timestamp}} | by {{element.author}}</div>
+                     <div (click)="openPreview()" class="content-item-details-middle">
+                       {{element.title}} </div>
+                     <div class="content-item-details-bottom">{{element.mime_type}} {{element.timestamp}} <span *ngIf="element.author"> | by</span> {{element.author}}</div>
                   </div>
-                  <div class="content-item-actions">
-                    <mat-icon *ngIf="view==='edit'">delete</mat-icon>
+                  <div *ngIf="view==='edit'" class="content-item-actions">
+                    <mat-icon *ngIf="content_type !=='dependencies'">delete</mat-icon>
                     <div style="font-size: 0.6rem;">{{element.size}} </div>
                   </div> 
                 </div>
@@ -53,8 +54,8 @@
     </div>
     <div class="select-footer">
         <div class="select-submit-actions">
-          <div *ngIf="content_type==='!applications'">
-            <button *ngIf="view==='edit'" mat-raised-button>Upload New</button> 
+          <div *ngIf="content_type !=='applications'">
+            <button *ngIf="view ==='edit'" mat-raised-button>Upload New</button> 
           </div>
           <div class="new-application-section" *ngIf="content_type==='applications'&&view==='edit'">
             <div style="flex-grow: 1;">

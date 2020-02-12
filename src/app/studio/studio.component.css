@@ -1,0 +1,15 @@
+
+
+  .currillum-cover{
+    height: 100%; 
+    width: 100%;
+    
+  }
+
+.curricullum-book{
+    box-shadow: 1px 1px 4px #ccc;
+    cursor: pointer; 
+    width: 100%; 
+    height: 100%;
+}
+  

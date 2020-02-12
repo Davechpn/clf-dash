@@ -2,7 +2,7 @@
     <div class="quiz-create-header">
         <div class="quiz-create-title">
        <span *ngIf="view!=='edit'">Quiz - {{context.context}}</span> 
-       <input *ngIf="view==='edit'" [value]="context.context"/>  
+       <input *ngIf="view==='edit'" [value]="context.context" autocomplete="off"/>  
         </div>
         <div class="quiz-create-close-actions">
               <mat-icon *ngIf="view==='detail'" (click)="openEdit()">edit</mat-icon>
@@ -16,11 +16,11 @@
        <div *ngIf="view==='new'" class="quiz-create-form">
          <form [formGroup]="quizContextForm">
             <mat-form-field class="full-field-width">
-              <input matInput placeholder="Context" formControlName="context"  >
+              <input matInput placeholder="Context" formControlName="context" autocomplete="off" >
             </mat-form-field>
 
             <mat-form-field class="full-field-width">
-              <input matInput placeholder="Number" formControlName="number" >
+              <input matInput placeholder="Number" formControlName="number" autocomplete="off" >
             </mat-form-field>
         
          <div>
@@ -79,7 +79,7 @@
     
        <div *ngIf="view==='create'" class="quiz-variant-form">
         <div>New Variant</div>
-        <form [formGroup]="quizVariantForm">
+        <form [formGroup]="quizVariantForm" autocomplete="off">
           <mat-form-field class="full-field-width">
             <mat-select placeholder="Type" formControlName="content_type" >
               <mat-option *ngFor="let type of quiz_types" [value]="type">
@@ -89,33 +89,33 @@
           </mat-form-field>
 
           <mat-form-field *ngIf="quizVariantForm.value.content_type==='text'"  class="full-field-width">
-            <input matInput placeholder="Quiz" formControlName="quiz">
+            <input matInput placeholder="Quiz" formControlName="quiz" autocomplete="off"> 
           </mat-form-field>
 
-          <input *ngIf="quizVariantForm.value.content_type==='image'" type="file"/>
+          <input *ngIf="quizVariantForm.value.content_type==='image'" type="file" autocomplete="off"/>
 
         </form>
          <div class="variant-answers-section-create">
            <div class="variant-answers">
              <div>Correct Answers</div>
              <div class="answer">
-              <input class="answer-input" type=""/>
+              <input class="answer-input" type="text" autocomplete="off"/>
               <mat-icon>close</mat-icon>
              </div>
              <div class="answer">
-              <input class="answer-input" type=""/>
+              <input class="answer-input" type="text" autocomplete="off"/>
               <mat-icon>check</mat-icon>
              </div>
            </div>
            <div class="variant-answers">
              <div>Wrong Answers</div>
               <div class="answer">
-               <input class="answer-input" type=""/>
+               <input class="answer-input" type="text" autocomplete="off"/>
                <mat-icon>close</mat-icon>
               </div>
 
               <div class="answer">
-                <input class="answer-input" type=""/>
+                <input class="answer-input" type="text" autocomplete="off"/>
                 <mat-icon>check</mat-icon>
                </div>
            </div>

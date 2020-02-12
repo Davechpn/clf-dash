@@ -32,12 +32,12 @@ export class ContentService {
 
   getDeps(curricula_id){
     console.log('collecting dependacies')
-     return this.db.collection(`curricular/${curricula_id}/topics`).valueChanges({idField:'id'})
+     return this.db.collection(`curricula/${curricula_id}/topics`).valueChanges({idField:'id'})
   }
 
   getApplications(){
     console.log('collecting applications')
-     return this.db.collection(`application`).valueChanges({idField:'id'})
+     return this.db.collection(`applications`).valueChanges({idField:'id'})
   }
 
   getQuiz(curricula_id,topic_id){

@@ -3,15 +3,22 @@
     <mat-vertical-stepper class="stepper" [linear]="isLinear" #stepper>
         <mat-step>
          
-            <ng-template matStepLabel>Details</ng-template>
-            <button (click)="openEdit()">edit</button>
+            <ng-template matStepLabel style="border: 1px solid fuchsia">
+              <div class="step-title">
+                <div class="step-title-text"> Detail</div>
+                <mat-icon  (click)="openEdit()">edit</mat-icon>
+            
+              </div>
+  
+            </ng-template>
+
             <div>
                 <input *ngIf="view==='edit'" type="file" (change)="fileChangeEvent($event)" />
                 <div *ngIf="cropping && view==='edit'">
                     <image-cropper
                         [imageChangedEvent]="imageChangedEvent"
                         [maintainAspectRatio]="true"
-                        [aspectRatio]="3 / 4"
+                        [aspectRatio]="8 / 11"
                         [resizeToWidth]="256"
                         format="png"
                         (imageCropped)="imageCropped($event)"
@@ -62,9 +69,17 @@
         </mat-step>
         <mat-step style="overflow-x: scroll;" >
          
-            <ng-template matStepLabel>Topics</ng-template>
+            <ng-template matStepLabel>
+              <div class="step-title">
+                <div class="step-title-text"> Topics</div>
+                <mat-icon  routerLinkActive="router-link-active" >add</mat-icon>
+            
+              </div>
+              
+            </ng-template>
             <div style="margin: 0px -30px 0px -22px;border: 1px solid tomato; overflow-x: scroll;">
-              <app-topics [curricula_id]="curricula_id"></app-topics>
+              <!-- <app-topics [curricula_id]="curricula_id"></app-topics> -->
+              <router-outlet></router-outlet>
             </div>
        
             <div>
@@ -76,7 +91,12 @@
 
         <mat-step >
          
-          <ng-template matStepLabel>Key Terms</ng-template>
+          <ng-template matStepLabel>
+            <div class="step-title">
+              <div class="step-title-text"> Key Terms</div>
+              <mat-icon>add</mat-icon>
+            </div>
+          </ng-template>
          <app-tutors></app-tutors>
           <div>
             <button mat-button matStepperPrevious>Back</button>
@@ -87,7 +107,12 @@
 
       <mat-step >
          
-        <ng-template matStepLabel>Practicals</ng-template>
+        <ng-template matStepLabel>
+          <div class="step-title">
+            <div class="step-title-text"> Practicals</div>
+            <mat-icon>add</mat-icon>
+          </div>
+        </ng-template>
        <app-tutors></app-tutors>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -98,7 +123,12 @@
 
     <mat-step >
          
-      <ng-template matStepLabel>Fomulas</ng-template>
+      <ng-template matStepLabel>
+        <div class="step-title">
+          <div class="step-title-text"> Fomulas</div>
+          <mat-icon>add</mat-icon>
+        </div>
+      </ng-template>
      <app-tutors></app-tutors>
       <div>
         <button mat-button matStepperPrevious>Back</button>
@@ -109,7 +139,12 @@
 
         <mat-step >
          
-            <ng-template matStepLabel>Tutors</ng-template>
+            <ng-template matStepLabel>
+              <div class="step-title">
+                <div class="step-title-text"> Tutors</div>
+                <mat-icon>add</mat-icon>
+              </div>
+            </ng-template>
            <app-tutors></app-tutors>
             <div>
               <button mat-button matStepperPrevious>Back</button>
