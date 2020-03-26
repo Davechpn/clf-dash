@@ -1,7 +1,7 @@
 {
   "name": "CLF-Dash",
   "short_name": "CLF-Dash",
-  "theme_color": "#008080",
+  "theme_color": "#ffffff",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",

@@ -1,8 +1,8 @@
 <div class="quiz-create-container">
     <div class="quiz-create-header">
         <div class="quiz-create-title">
-       <span *ngIf="view!=='edit'">Quiz - {{context.context}}</span> 
-       <input *ngIf="view==='edit'" [value]="context.context" autocomplete="off"/>  
+       <span *ngIf="view!=='edit'">Quiz - {{context?.context}}</span> 
+       <input *ngIf="view==='edit'" [value]="context?.context" autocomplete="off"/>  
         </div>
         <div class="quiz-create-close-actions">
               <mat-icon *ngIf="view==='detail'" (click)="openEdit()">edit</mat-icon>
@@ -32,7 +32,7 @@
          
           
        </div>
-       <div *ngIf="context.quiz_variants && view!='create'">
+       <div *ngIf="context?.quiz_variants && view!='create'">
         <div>Variants</div>
         <div class="variant-section" *ngFor="let item of context.quiz_variants">
     

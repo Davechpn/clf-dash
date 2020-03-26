@@ -1,9 +1,19 @@
 <div class="header">
        
         <div class="header-top-strip">
-                <div style="flex-grow: 1;font-size: 2rem; display: flex; align-items: center"><img class ="logo" src="./../../assets/icons/logo-72.jpg" />CLF-Dash</div>
-                <div>
-                    <mat-icon mat-button [matMenuTriggerFor]="menu">menu</mat-icon>
+                <div style="flex-grow: 1;font-size: 1.4rem; display: flex; align-items: center"><img class ="logo" src="./../../assets/icons/logo-72.jpg" /></div>
+                <div style="">
+                    <mat-form-field>
+                        <mat-label>Curriculumn</mat-label>
+                        <mat-select [(ngModel)]="selected_curriculum">
+                          <mat-option *ngFor="let item of curricula" (click)="onSelect()" [value]="item">
+                            {{item.title}}
+                          </mat-option>
+                        </mat-select>
+                </mat-form-field> 
+                </div>
+                <div class="menu-container" style="">
+                    <mat-icon style=" font-size: 38px; margin: 3px 0px 0px 5px;color:#777" mat-button [matMenuTriggerFor]="menu">menu</mat-icon>
 
                     <mat-menu #menu="matMenu">
                     <button mat-menu-item [routerLink]="['/admins']" routerLinkActive="router-link-active" >Admins</button>
@@ -13,11 +23,8 @@
                     </mat-menu>
                 </div>
 
-            
-                
-
         </div>
-        <div class="header-bottom-strip">
+        <!-- <div class="header-bottom-strip">
             <br/><br/>
                 <mat-form-field>
                         <mat-label>Curriculumn</mat-label>
@@ -27,7 +34,7 @@
                           </mat-option>
                         </mat-select>
                 </mat-form-field> 
-        </div>
+        </div> -->
 </div>
 
 <div class="content">

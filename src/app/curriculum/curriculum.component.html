@@ -3,7 +3,7 @@
     <mat-vertical-stepper class="stepper" [linear]="isLinear" #stepper>
         <mat-step>
          
-            <ng-template matStepLabel style="border: 1px solid fuchsia">
+            <ng-template matStepLabel >
               <div class="step-title">
                 <div class="step-title-text"> Detail</div>
                 <mat-icon  (click)="openEdit()">edit</mat-icon>
@@ -77,7 +77,7 @@
               </div>
               
             </ng-template>
-            <div style="margin: 0px -30px 0px -22px;border: 1px solid tomato; overflow-x: scroll;">
+            <div style="margin: 0px -30px 0px -22px; overflow-x: scroll;">
               <!-- <app-topics [curricula_id]="curricula_id"></app-topics> -->
               <router-outlet></router-outlet>
             </div>

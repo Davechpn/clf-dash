@@ -7,14 +7,24 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class PreviewComponent implements OnInit {
   @Output() onClose = new EventEmitter
-  @Input()content_type
+  @Input()type
+  zoom = 1;
   constructor() { }
-
+  pdfSrc = "/../../assets/content/chemistry_full_v1.5.pdf";
   ngOnInit() {
   }
 
   close(){
     this.onClose.emit()
+  }
+
+  toggleZoom(){
+    console.log("toogle zoom")
+    if(this.zoom===1.8){
+       this.zoom = 1
+    }else{
+       this.zoom = 1.8
+    }
   }
 
 }

@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms'
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { ContentService } from '../content.service';
+import { ActivatedRoute } from '@angular/router';
+import { CurriculumService} from '../curriculum.service';
+import { Router } from '@angular/router';
+import { Location} from '@angular/common';
 
 @Component({
   selector: 'app-quiz-context',
@@ -8,20 +13,41 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms'
 })
 export class QuizContextComponent implements OnInit {
 
-  @Input()context
-  @Output()onClose = new EventEmitter()
+  context;
   quizContextForm:FormGroup;
   quizVariantForm:FormGroup;
+  curricula_id;
+  context_id;
   view = 'detail'
   quiz_types=['text','image','sticker']
-  constructor(private fb:FormBuilder) { 
-    
+  
+  constructor(private _location: Location,private _router: Router,private curriculum_service:CurriculumService,private fb:FormBuilder, private cs:ContentService, private route:ActivatedRoute) { 
+    this.route.params.subscribe(x=>{
+      console.log(x)
+      this.context_id = x.context_id
+    })
   }
 
   ngOnInit() {
-    if(this.context==='new'){
-      this.view = 'new'
-    }
+    this.curriculum_service.current_curriculum
+    .subscribe(x=>{
+      if(x.id !== "all"){
+        this.curricula_id = x.id
+        console.log(this.curricula_id)
+
+      }else{
+        this.curricula_id = this._router.url.split('/')[2]
+        console.log(this.curricula_id)
+      }
+
+      
+      this.getQuizContext(this.curricula_id,this.context_id)
+    })
+
+
+    // if(this.context==='new'){
+    //   this.view = 'new'
+    // }
     this.quizContextForm = this.fb.group(
       {
         context:['',[Validators.required]],
@@ -39,7 +65,19 @@ export class QuizContextComponent implements OnInit {
       semblences:['']
 
     })
-    this.initializeForm()
+   // this.initializeForm()
+
+  
+  }
+
+  getQuizContext(curricula_id, context_id){
+     this.cs.getQuizContext(curricula_id,context_id)
+     .subscribe(x=>{
+       console.log(x)
+       this.context = x
+       this.initializeForm()
+     })
+     
   }
 
   initializeForm(){
@@ -53,7 +91,7 @@ export class QuizContextComponent implements OnInit {
 
   close(){
     if(this.view==='detail'||this.view==='new'){
-      this.onClose.emit()
+      this._location.back();
     }else{
       this.view = 'detail'
     }

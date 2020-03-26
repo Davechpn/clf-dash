@@ -3,7 +3,7 @@
     top:0px;
     left: 0px;
     right:0px;
-    height: 112px;
+    height: 66px;
    
     box-shadow: 0px 1px 6px #444;
 }
@@ -28,13 +28,27 @@
 
 }
 .logo{
-    width: 56px;
-    height: 56px;
+    position: relative;
+    top:-8px;
+    left:-6px;
+    width: 66px;
+    height: 66px;
+}
+
+.menu-container{
+    display: flex;
+    flex-direction: column;
+   margin-left: 4px;
+    border:1px solid #888;
+    position: relative;
+    top:0px;
+    height: 44px;
+    width: 48px;
 }
 
 .content{
     position: fixed;
-    top:120px;
+    top:72px;
     bottom: 58px;
     left: 4px;
     right: 4px;
@@ -73,7 +87,7 @@
     flex-grow: 1;
     flex-direction: row;
     justify-content: flex-start;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #333;
     align-items: flex-end;
 
     font-weight: 600;

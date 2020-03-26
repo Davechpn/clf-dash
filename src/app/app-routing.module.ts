@@ -15,6 +15,7 @@ import { TopicsComponent } from './topics/topics.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { SelectContentComponent } from './select-content/select-content.component';
 import { NewCurriculumComponent } from './new-curriculum/new-curriculum.component';
+import { QuizContextComponent } from './quiz-context/quiz-context.component';
 
 
 const routes: Routes = [
@@ -27,8 +28,11 @@ const routes: Routes = [
       {path:'curriculum/new',component:NewCurriculumComponent},
       {path:'curriculum/:id', component:CurriculumComponent,children:[
         {path:'topics',component:TopicsComponent, children:[
-          {path:':id/content/:type',component:SelectContentComponent}
-        ]}
+          {path:':topic_id/content/:type',component:SelectContentComponent},
+          {path:':topic_id/quiz/:context_id',component:QuizContextComponent},
+        ]},
+        // {path:'quiz/:context_id',component:QuizContextComponent},
+        {path:'content/:id',component:PreviewComponent}
       ]},
       {path:'admins',component:AdminsComponent},
       {path:'account',component:AccountComponent},

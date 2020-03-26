@@ -4,7 +4,7 @@ overflow-x: scroll;
 .topic-header{
   border:1px solid lightcoral;
   display: flex;
-  width: 250px;
+  width: 76vw;
 }
 .topic-title{
   border:1px solid springgreen;
@@ -16,14 +16,14 @@ overflow-x: scroll;
 }
 
 .topic-edit-template{
-    border: 1px solid crimson;
+
    background-color: white;
-    width: 250px;
+    width: 76vw;
     min-height: 100px;
 }
 
 .topic-edit-content{
-  border: 1px solid sandybrown;
+  /* border: 1px solid sandybrown; */
   min-height:75px ;
   margin: 6px;
   display: flex;
@@ -40,7 +40,6 @@ overflow-x: scroll;
 }
 
 .topic-edit-content-icon{
-  border: 1px solid lime;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -51,7 +50,7 @@ overflow-x: scroll;
   display: flex;
 }
 .topic-pass-rate-section{
-  border: 1px solid black;
+
   display: flex; 
   justify-content: flex-end;
 }
@@ -75,7 +74,7 @@ overflow-x: scroll;
 
 .topic-edit-content-action-right{
   padding: 0px 8px;
-  border: 1px solid teal;
+  /* border: 1px solid teal; */
  
 }
 
@@ -137,7 +136,7 @@ tree-node:last-child > .tree-node > .tree-children::after {
 }
 
 .topic-quiz-header{
-  border: 1px solid fuchsia;
+  /* border: 1px solid fuchsia; */
   display: flex;
   align-items: center;
 }

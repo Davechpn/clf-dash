@@ -12,3 +12,13 @@
 .count-item-count{
    font-size: 1.2rem;
 } 
+
+.gragh-title{
+   margin-top: 8px;
+   font-size:1.2rem;
+   font-weight: bold;
+}
+.graph-title-desc{
+   font-size:0.8rem;
+   font-style: italic;
+}

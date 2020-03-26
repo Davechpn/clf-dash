@@ -1,18 +1,5 @@
-<div>
-  <h2>New Curriculum</h2>
-</div>
-<div>
- 
-
-   
- 
-
-</div>
-
-
-
 <div class="details-form-container">
-    <form class="example-form" [formGroup]="detailsForm" (submit)="update()">
+    <form class="example-form" [formGroup]="detailsForm">
       <div class="form-width-section">
         <div class="form-width-h" style="padding-right: 4px;">
           <div *ngIf="!croppedImage" class="form-width-h upload-cover-area" (click)="fileInput.click()">

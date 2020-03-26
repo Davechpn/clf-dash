@@ -1,5 +1,6 @@
+<div class="gragh-title">STATS</div>
 <div class="count-strip">
-  <div class="count-item"  style="flex-grow: 1;">
+ <div class="count-item"  style="flex-grow: 1;">
       <div class="count-item-count">100</div>
       <div>Pass</div>
   </div>
@@ -22,6 +23,7 @@
 
 <div *ngIf="current_curriculum.id==='all'">
   <div>
+    <div class="gragh-title">CDG<span class="graph-title-desc">(Curriculumn Distrubution Graph)</span></div>
     <div class="chart">
       <canvas baseChart
         [data]="pieChartData"
@@ -35,6 +37,19 @@
       </canvas>
     </div>
   </div>
+
+  <div style="display: block;">
+    <div class="gragh-title">OPG<span class="graph-title-desc">(Overral Perfomance Graph)</span></div>
+          <canvas baseChart width="400" height="400"
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="lineChartType"
+                     
+                   ></canvas>
+  </div>
 </div>
 <!-- <div>
   <button mat-button mat-raised-button color="primary" (click)="pieChartLegend=!pieChartLegend">Toggle Legend</button>
@@ -44,7 +59,10 @@
   <button mat-button mat-raised-button color="primary" (click)="changeLegendPosition()">Change Legend Position</button>
 </div> -->
 
-<div style="display: block;">
+
+
+<div style="display: block;" *ngIf="current_curriculum.id !=='all'">
+  <div class="gragh-title">CAG<span class="graph-title-desc">(Curriculum Activity Graph)</span></div>
         <canvas baseChart width="400" height="400"
                     [datasets]="lineChartData"
                     [labels]="lineChartLabels"

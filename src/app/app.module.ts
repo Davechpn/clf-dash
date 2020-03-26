@@ -18,6 +18,8 @@ import { CdkStepperModule} from '@angular/cdk/stepper';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { TreeModule } from 'angular-tree-component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MatVideoModule } from 'mat-video';
 import { 
   MatFormFieldModule,
   MatAutocompleteModule,
@@ -117,6 +119,8 @@ import { NewCurriculumComponent } from './new-curriculum/new-curriculum.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     TreeModule.forRoot(),
+    PdfViewerModule,
+    MatVideoModule,
     ImageCropperModule,
     //Material Modules Below
     MatFormFieldModule,

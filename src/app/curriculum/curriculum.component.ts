@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import {ActivatedRoute} from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-curriculum',
@@ -23,10 +23,6 @@ export class CurriculumComponent implements OnInit {
   constructor(private route:ActivatedRoute, private db:AngularFirestore, private fb:FormBuilder) {}
 
   ngOnInit() {
-    this.route.params.subscribe(x=>{
-      this.curricula_id = x.id;
-    })
-    this.getDetails(this.curricula_id)
     this.detailsForm = this.fb.group({
       title:['',[Validators.required]],
       course_code:[''],
@@ -34,30 +30,43 @@ export class CurriculumComponent implements OnInit {
       duration:[''],
       description:['']
     })
+    this.route.params.subscribe(x=>{
+      console.log(x)
+      this.curricula_id = x.id;
+
+      this.getDetails(this.curricula_id)
+     
+    })
+
   }
 
   getDetails(id){
+    console.log('getdetails' + id)
     this.db.doc(`curricula/${id}`).valueChanges()
     .subscribe(x=>{
-         this.details = x
-         this.cover_image = this.details.cover_image
-         if(x['title']){
-           this.detailsForm.controls['title'].setValue(x['title'])
-         }
-         if(x['course_code']){
-          this.detailsForm.controls['course_code'].setValue(x['course_code'])
-         }
-         if(x['level']){
-          this.detailsForm.controls['level'].setValue(x['level'])
-         }
-         if(x['duration']){
-          this.detailsForm.controls['duration'].setValue(x['duration'])
-         }
-         if(x['description']){
-          this.detailsForm.controls['description'].setValue(x['description'])
-         } 
-         
-         this.closeEdit()
+      if(x){
+        console.log(x)
+        this.details = x
+        this.cover_image = this.details.cover_image
+        if(x['title']){
+          this.detailsForm.controls['title'].setValue(x['title'])
+        }
+        if(x['course_code']){
+         this.detailsForm.controls['course_code'].setValue(x['course_code'])
+        }
+        if(x['level']){
+         this.detailsForm.controls['level'].setValue(x['level'])
+        }
+        if(x['duration']){
+         this.detailsForm.controls['duration'].setValue(x['duration'])
+        }
+        if(x['description']){
+         this.detailsForm.controls['description'].setValue(x['description'])
+        } 
+        
+        this.closeEdit()
+      }
+      
     })
   }
 

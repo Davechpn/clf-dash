@@ -24,18 +24,22 @@
 .preview-title{
      flex-grow: 1;
      margin-left: 4px;
- 
 }
 
 
 .preview-content{
- 
-   display: flex;
-   align-items: center;
-   background-color: black;
+   /* display: flex; */
+   /* align-items: center; */
+   /* background-color: black; */
    color: crimson;
-   font-size: 1.2rem;
-   min-height: 200px;
+   /* font-size: 1.2rem; */
+   height: 400px;
+   overflow-y: scroll;
+   width:100vw
+}
+
+.preview-item{
+  width: 97vw;
 }
 
 

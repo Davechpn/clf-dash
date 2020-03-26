@@ -1,7 +1,7 @@
 import { Component, OnInit,AfterViewInit, Input, ViewChild } from '@angular/core';
 import {AngularFirestore}from '@angular/fire/firestore'
 import {ContentService} from '../content.service';
-
+import { Router  } from "@angular/router";
 import { TreeNode, ITreeOptions, TreeComponent } from 'angular-tree-component';
 
 
@@ -48,10 +48,11 @@ export class TopicsComponent implements OnInit, AfterViewInit {
   show_quiz: boolean;
   current_edit: any;
   quiz_contexts: any;
-  selected_quiz_context: any;
-  constructor(private db:AngularFirestore, private cs:ContentService) {
+  show_modal: boolean;
+
+
+  constructor(private router:Router,private db:AngularFirestore, private cs:ContentService) {
     this.nodes = [];
-  
   }
 
   ngOnInit(): void {
@@ -80,18 +81,13 @@ export class TopicsComponent implements OnInit, AfterViewInit {
      //const newNodes = this.asyncChildren.map((c) => Object.assign({}, c));
      const child_nodes = this.all_tracks.filter(o=>o.parent_id===node.data.id).map((c) => Object.assign({}, c));
      child_nodes.sort((child1,child2) => child1.timestamp - child2.timestamp);
+     
      return new Promise((resolve, reject) => {
        setTimeout(() => resolve(child_nodes), 700);
      });
    }
 
 
-
-   open(){
-     console.log('changed size')
-    this.tree.sizeChanged()
-    this.tree.treeModel.expandAll();
-   }
 
    addTopic(node){   
       console.log('Adding topic under the selected node')
@@ -121,6 +117,8 @@ export class TopicsComponent implements OnInit, AfterViewInit {
    }
 
    openEdit(data){
+    //disable router outlet  
+    this.show_modal = false;
     this.current_edit = data.id
     this.current_topic_id = '4QNDgi2keLzExIosMTeC'
     this.cs.getQuiz(this.curricula_id,this.current_topic_id)
@@ -133,24 +131,22 @@ export class TopicsComponent implements OnInit, AfterViewInit {
    }
 
    closeEdit(data){
-    this.current_edit = ''
+     //disable router outlet
+    this.show_modal = false    
+    this.current_edit = '';
+   
    }
 
 
-   selectContent(type,topic_id){
-     console.log(type)
-     this.select_content_type = type
-     this.current_topic_id = '4QNDgi2keLzExIosMTeC';//topic_id
-     this.show_select_content = true
+   openContent(topic_id,type){
+    this.show_modal = true;
+    this.router.navigate([`curriculum/${this.curricula_id}/topics/${topic_id}/content/${type}`])  
    }
 
-   showPreview(){
-     this.show_preview = true
-   }
-
-   openQuiz(context){
-     this.show_quiz = true;
-     this.selected_quiz_context = context
+   openQuiz(topic_id,context_id){
+     //this.show_quiz = true;
+     this.show_modal = true;
+     this.router.navigate([`curriculum/${this.curricula_id}/topics/${topic_id}/quiz/${context_id}`])  
    }
 
 

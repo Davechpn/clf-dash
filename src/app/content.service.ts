@@ -45,5 +45,10 @@ export class ContentService {
     return this.db.collection(`curricula/${curricula_id}/quiz`,ref=>ref.where('topic_id','==',topic_id)).valueChanges({idField:'id'})
   }
 
+  getQuizContext(curricula_id,context_id){
+    return this.db.doc(`curricula/${curricula_id}/quiz/${context_id}`).valueChanges()
+  }
+
+
   
 }

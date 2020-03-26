@@ -42,7 +42,7 @@ body{
 
 
 .mat-step-label{
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
     width: 100%;
   }
 
